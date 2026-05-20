@@ -1,491 +1,244 @@
-<h2 class="sr-only" style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)">Preview of the Vision-based Task Assistants GitHub Pages site, showing the hero, filters, and paper list as it will appear when published.</h2>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Vision-based Task Assistants — A Curated Reading List</title>
+  <meta name="description" content="A curated reading list of recent and foundational papers on vision-based task assistance: temporal action segmentation, progress estimation, mistake recognition, augmented reality, and more." />
 
-<style>
-@import url('https://cdn.jsdelivr.net/npm/@fontsource-variable/fraunces@5.0.20/index.css');
-@import url('https://cdn.jsdelivr.net/npm/@fontsource/ibm-plex-sans@5.0.13/index.css');
-@import url('https://cdn.jsdelivr.net/npm/@fontsource/ibm-plex-mono@5.0.13/index.css');
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400;1,9..144,500&family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:ital,wght@0,400;0,500;0,600;1,400&display=swap" />
 
-.vita-wrap {
-  border-radius: var(--border-radius-lg);
-  overflow: hidden;
-  border: 0.5px solid var(--color-border-tertiary);
-  background: var(--color-background-secondary);
-  margin: 0.5rem 0;
-}
-.vita-chrome {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  padding: 10px 14px;
-  background: var(--color-background-tertiary);
-  border-bottom: 0.5px solid var(--color-border-tertiary);
-  font-size: 12px;
-  color: var(--color-text-secondary);
-  font-family: var(--font-sans);
-}
-.vita-dots { display: flex; gap: 6px; }
-.vita-dots span { width: 10px; height: 10px; border-radius: 50%; background: var(--color-border-secondary); display: inline-block; }
-.vita-url { flex: 1; text-align: center; font-family: var(--font-mono); font-size: 11px; }
+  <link rel="stylesheet" href="assets/style.css" />
+</head>
+<body>
 
-/* ---- Page styles (scoped under .vita-page) ---- */
-.vita-page {
-  --paper: #F5F1E8;
-  --paper-deep: #EBE4D2;
-  --ink: #1A1815;
-  --ink-soft: #3A352C;
-  --muted: #7A7264;
-  --muted-soft: #B5AC9C;
-  --rule: #D9D1BE;
-  --rule-soft: #E4DDC9;
-  --accent: #C8341A;
-  --serif: 'Fraunces Variable', 'Fraunces', Georgia, serif;
-  --sans:  'IBM Plex Sans', system-ui, sans-serif;
-  --mono:  'IBM Plex Mono', ui-monospace, Menlo, monospace;
-
-  background: var(--paper);
-  color: var(--ink);
-  font-family: var(--sans);
-  font-size: 14px;
-  line-height: 1.55;
-  padding: 1.75rem 1.5rem 2rem;
-  position: relative;
-}
-.vita-page::selection { background: var(--ink); color: var(--paper); }
-.vita-page a { color: inherit; text-decoration: none; }
-.vita-page button { font: inherit; cursor: pointer; }
-
-/* Hero */
-.vp-kicker {
-  display: flex; align-items: center; gap: 0.75rem;
-  font-family: var(--mono); font-size: 10px;
-  letter-spacing: 0.12em; text-transform: uppercase;
-  color: var(--muted); margin-bottom: 1.25rem;
-}
-.vp-kicker .rule { width: 2rem; height: 1px; background: var(--ink); display: inline-block; }
-.vp-hero-grid {
-  display: grid;
-  grid-template-columns: minmax(0, 1.5fr) minmax(0, 1fr);
-  gap: 1.5rem;
-  align-items: start;
-}
-.vp-title {
-  font-family: var(--serif);
-  font-weight: 500;
-  font-size: 56px;
-  line-height: 0.95;
-  letter-spacing: -0.025em;
-  margin: 0 0 1.25rem;
-  font-variation-settings: "opsz" 144;
-}
-.vp-title em {
-  font-style: italic;
-  position: relative;
-  display: inline-block;
-}
-.vp-title em::after {
-  content: ''; position: absolute; left: 0; bottom: 0.08em;
-  height: 0.12em; width: 100%; background: var(--accent);
-  z-index: -1; opacity: 0.85;
-}
-.vp-lede {
-  font-size: 15px; line-height: 1.6; color: var(--ink-soft); margin: 0;
-}
-.vp-lede em { font-family: var(--serif); font-style: italic; color: var(--ink); }
-.vp-viewfinder {
-  width: 100%; aspect-ratio: 1 / 1; max-width: 200px; justify-self: end;
-}
-.vp-viewfinder svg { width: 100%; height: 100%; }
-.vp-viewfinder path,
-.vp-viewfinder .vf-cross line,
-.vp-viewfinder .vf-ticks line,
-.vp-viewfinder rect.vf-box-inner { fill: none; stroke: var(--ink); stroke-width: 1; }
-.vp-viewfinder rect.vf-box-inner { stroke: var(--accent); stroke-width: 1.25; stroke-dasharray: 4 3; }
-.vp-viewfinder circle { fill: var(--accent); stroke: none; }
-.vp-viewfinder text { font-family: var(--mono); font-size: 7px; fill: var(--muted); letter-spacing: 0.1em; }
-
-.vp-meta {
-  margin-top: 1.5rem;
-  padding-top: 1.25rem;
-  border-top: 1px solid var(--rule);
-  display: flex; gap: 2.5rem; flex-wrap: wrap;
-}
-.vp-meta-item { display: flex; flex-direction: column; gap: 0.15rem; }
-.vp-meta-num {
-  font-family: var(--serif); font-size: 22px; font-weight: 500; line-height: 1;
-  font-variation-settings: "opsz" 144;
-}
-.vp-meta-label {
-  font-family: var(--mono); font-size: 9px;
-  letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted);
-}
-
-/* Sections */
-.vp-section {
-  margin-top: 2rem; padding-top: 1.5rem;
-  border-top: 1px solid var(--rule);
-}
-.vp-section-head {
-  display: flex; align-items: baseline; gap: 1rem; margin-bottom: 1rem;
-}
-.vp-section-num {
-  font-family: var(--mono); font-size: 10px;
-  letter-spacing: 0.1em; text-transform: uppercase; color: var(--accent);
-}
-.vp-section-title {
-  font-family: var(--serif); font-weight: 500;
-  font-size: 24px; letter-spacing: -0.015em; margin: 0;
-  font-variation-settings: "opsz" 72;
-}
-
-/* Filter chips */
-.vp-filters-row {
-  display: flex; gap: 0.75rem; align-items: center; flex-wrap: wrap;
-  padding-bottom: 1rem; border-bottom: 1px solid var(--rule-soft);
-}
-.vp-search {
-  flex: 1 1 240px;
-  display: flex; align-items: center; gap: 0.5rem;
-  padding: 0.5rem 0.75rem;
-  background: var(--paper-deep);
-  border-radius: 2px;
-  font-size: 13px; color: var(--muted-soft);
-  font-family: var(--sans);
-}
-.vp-sort {
-  display: inline-flex; align-items: center; gap: 0.5rem;
-  font-family: var(--mono); font-size: 10px;
-  letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted);
-  border: 1px solid var(--rule); padding: 0.4rem 0.6rem; border-radius: 2px;
-}
-.vp-chips {
-  margin-top: 1rem;
-  display: flex; flex-wrap: wrap; gap: 0.45rem;
-}
-.vp-chip {
-  display: inline-flex; align-items: center; gap: 0.35rem;
-  padding: 0.3rem 0.6rem;
-  background: transparent;
-  border: 1px solid var(--rule); border-radius: 999px;
-  font-family: var(--mono); font-size: 10px; letter-spacing: 0.04em;
-  color: var(--ink-soft);
-}
-.vp-chip.is-active { background: var(--ink); border-color: var(--ink); color: var(--paper); }
-.vp-chip-count { font-size: 9px; opacity: 0.7; }
-
-/* Papers */
-.vp-papers { list-style: none; padding: 0; margin: 1.25rem 0 0; }
-.vp-paper {
-  position: relative;
-  display: grid; grid-template-columns: 3rem 1fr; gap: 1rem;
-  padding: 1.25rem 0; border-bottom: 1px solid var(--rule-soft);
-}
-.vp-paper-year {
-  font-family: var(--mono); font-size: 13px; font-weight: 500;
-  color: var(--ink); padding-top: 0.25rem;
-}
-.vp-paper-title {
-  font-family: var(--serif); font-weight: 500;
-  font-size: 18px; line-height: 1.25; letter-spacing: -0.01em;
-  margin: 0 0 0.4rem;
-  font-variation-settings: "opsz" 36;
-}
-.vp-paper-authors {
-  font-style: italic; color: var(--ink-soft);
-  font-size: 13px; margin: 0 0 0.4rem;
-}
-.vp-paper-venue {
-  display: inline-block;
-  font-family: var(--mono); font-size: 9px;
-  letter-spacing: 0.06em; text-transform: uppercase;
-  padding: 0.15rem 0.45rem;
-  border: 1px solid var(--rule); color: var(--ink-soft);
-  border-radius: 2px; margin-right: 0.4rem;
-}
-.vp-paper-tldr {
-  margin: 0.5rem 0 0; color: var(--ink-soft);
-  font-size: 13px; line-height: 1.55;
-}
-.vp-paper-foot {
-  margin-top: 0.65rem;
-  display: flex; flex-wrap: wrap; gap: 0.4rem 0.85rem; align-items: center;
-}
-.vp-paper-tags { display: flex; flex-wrap: wrap; gap: 0.35rem; }
-.vp-paper-tag {
-  font-family: var(--mono); font-size: 9px;
-  letter-spacing: 0.06em; text-transform: uppercase; color: var(--muted);
-}
-.vp-paper-tag::before { content: '#'; opacity: 0.55; }
-.vp-paper-links { display: flex; gap: 0.75rem; margin-left: auto; }
-.vp-paper-link {
-  font-family: var(--mono); font-size: 10px;
-  letter-spacing: 0.06em; text-transform: uppercase;
-  border-bottom: 1px solid var(--ink); padding-bottom: 1px;
-}
-
-/* Footer in preview */
-.vp-footer {
-  margin-top: 1.5rem;
-  background: var(--ink); color: var(--paper);
-  padding: 1.25rem 1.5rem;
-  margin-left: -1.5rem; margin-right: -1.5rem; margin-bottom: -2rem;
-  display: flex; justify-content: space-between; align-items: flex-end;
-  flex-wrap: wrap; gap: 1rem;
-}
-.vp-footer-name {
-  font-family: var(--serif); font-weight: 500;
-  font-size: 18px; margin: 0 0 0.15rem;
-  font-variation-settings: "opsz" 72;
-}
-.vp-footer-sub {
-  font-family: var(--mono); font-size: 10px;
-  letter-spacing: 0.06em; color: var(--muted-soft); margin: 0;
-}
-.vp-footer-right {
-  text-align: right;
-  font-family: var(--mono); font-size: 10px;
-  letter-spacing: 0.06em; color: var(--muted-soft);
-}
-.vp-footer-right p { margin: 0.1rem 0; }
-</style>
-
-<div class="vita-wrap">
-  <div class="vita-chrome">
-    <div class="vita-dots"><span></span><span></span><span></span></div>
-    <div class="vita-url">your-username.github.io/vita-reading-list/</div>
-    <div style="width: 30px"></div>
-  </div>
-
-  <div class="vita-page">
-
-    <!-- Hero -->
-    <div class="vp-kicker">
-      <span class="rule"></span>
-      <span>A curated reading list · est. 2026</span>
+  <!-- ============================================================ -->
+  <!-- TOP NAV                                                       -->
+  <!-- ============================================================ -->
+  <header class="topnav">
+    <div class="topnav__inner">
+      <a class="topnav__brand" href="#top">
+        <span class="topnav__mark" aria-hidden="true">✦</span>
+        <span class="topnav__name">VITA · Reading List</span>
+      </a>
+      <nav class="topnav__links" aria-label="Primary">
+        <a href="#papers">Papers</a>
+        <a href="#topics">Topics</a>
+        <a href="#about">About</a>
+        <a href="#contribute">Contribute</a>
+      </nav>
     </div>
+  </header>
 
-    <div class="vp-hero-grid">
-      <div>
-        <h1 class="vp-title">Vision-based<br><em>Task Assistants.</em></h1>
-        <p class="vp-lede">
+  <main id="top">
+
+    <!-- ============================================================ -->
+    <!-- HERO                                                          -->
+    <!-- ============================================================ -->
+    <section class="hero">
+      <div class="hero__grid">
+
+        <div class="hero__kicker">
+          <span class="rule"></span>
+          <span class="kicker-text">A Curated Reading List · est. 2026</span>
+        </div>
+
+        <h1 class="hero__title">
+          Vision-based<br />
+          <em>Task Assistants.</em>
+        </h1>
+
+        <p class="hero__lede">
           A growing, opinionated collection of recent and foundational work on
           systems that <em>watch what we do</em> and <em>help us do it better</em>:
           temporal action segmentation, progress estimation, mistake recognition,
-          AR-based guidance, and the egocentric perception that makes it all possible.
+          AR-based guidance, and the egocentric perception that makes it all
+          possible.
+        </p>
+
+        <!-- Decorative crosshair illustration -->
+        <div class="hero__viewfinder" aria-hidden="true">
+          <svg viewBox="0 0 240 240" xmlns="http://www.w3.org/2000/svg">
+            <!-- corner brackets -->
+            <g class="vf-corners">
+              <path d="M 10 40 L 10 10 L 40 10" />
+              <path d="M 200 10 L 230 10 L 230 40" />
+              <path d="M 230 200 L 230 230 L 200 230" />
+              <path d="M 40 230 L 10 230 L 10 200" />
+            </g>
+            <!-- crosshair -->
+            <g class="vf-cross">
+              <line x1="120" y1="60" x2="120" y2="105" />
+              <line x1="120" y1="135" x2="120" y2="180" />
+              <line x1="60" y1="120" x2="105" y2="120" />
+              <line x1="135" y1="120" x2="180" y2="120" />
+              <circle cx="120" cy="120" r="3" />
+            </g>
+            <!-- inner bounding box -->
+            <rect class="vf-box" x="68" y="70" width="104" height="100" />
+            <!-- tick marks -->
+            <g class="vf-ticks">
+              <line x1="60" y1="20" x2="60" y2="26" />
+              <line x1="90" y1="20" x2="90" y2="26" />
+              <line x1="150" y1="20" x2="150" y2="26" />
+              <line x1="180" y1="20" x2="180" y2="26" />
+            </g>
+            <text x="68" y="64" class="vf-label">SUBJECT · 01</text>
+            <text x="172" y="184" text-anchor="end" class="vf-label">FRAME 027</text>
+          </svg>
+        </div>
+
+        <div class="hero__meta">
+          <div class="meta-item">
+            <span class="meta-num" id="meta-count">—</span>
+            <span class="meta-label">Papers</span>
+          </div>
+          <div class="meta-item">
+            <span class="meta-num" id="meta-cats">—</span>
+            <span class="meta-label">Topics</span>
+          </div>
+          <div class="meta-item">
+            <span class="meta-num" id="meta-updated">—</span>
+            <span class="meta-label">Last updated</span>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ============================================================ -->
+    <!-- TOPICS                                                        -->
+    <!-- ============================================================ -->
+    <section class="topics" id="topics">
+      <div class="section-head">
+        <span class="section-num">§ 01</span>
+        <h2 class="section-title">Topics covered</h2>
+      </div>
+      <p class="section-lede">
+        The list spans the perception stack that powers task assistance — from
+        recognizing what's happening, to estimating where you are in a procedure,
+        to flagging when something has gone wrong.
+      </p>
+      <ul class="topics__list">
+        <li><span class="topic-num">/01</span> Temporal Action Segmentation</li>
+        <li><span class="topic-num">/02</span> Action Detection &amp; Recognition</li>
+        <li><span class="topic-num">/03</span> Progress Estimation</li>
+        <li><span class="topic-num">/04</span> Mistake Recognition</li>
+        <li><span class="topic-num">/05</span> Action Anticipation</li>
+        <li><span class="topic-num">/06</span> Skill Assessment</li>
+        <li><span class="topic-num">/07</span> Vision–Language Models</li>
+        <li><span class="topic-num">/08</span> Egocentric Video</li>
+        <li><span class="topic-num">/09</span> Augmented Reality &amp; AR Assistance</li>
+        <li><span class="topic-num">/10</span> Datasets &amp; Benchmarks</li>
+      </ul>
+    </section>
+
+    <!-- ============================================================ -->
+    <!-- PAPERS                                                        -->
+    <!-- ============================================================ -->
+    <section class="papers-section" id="papers">
+      <div class="section-head">
+        <span class="section-num">§ 02</span>
+        <h2 class="section-title">The list</h2>
+      </div>
+
+      <div class="filters">
+        <div class="filters__row">
+          <label class="search">
+            <span class="search__icon" aria-hidden="true">⌕</span>
+            <input
+              id="search"
+              type="search"
+              placeholder="Search by title, author, venue…"
+              autocomplete="off"
+              spellcheck="false"
+            />
+          </label>
+          <div class="sort">
+            <label for="sort">Sort</label>
+            <select id="sort">
+              <option value="year-desc">Newest first</option>
+              <option value="year-asc">Oldest first</option>
+              <option value="title-asc">Title (A → Z)</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="filters__chips" id="chips" role="group" aria-label="Filter by topic">
+          <!-- chips injected by JS -->
+        </div>
+      </div>
+
+      <ol class="papers" id="papers-list">
+        <!-- papers injected by JS -->
+      </ol>
+
+      <p class="papers__empty" id="papers-empty" hidden>
+        No papers match those filters yet.
+      </p>
+    </section>
+
+    <!-- ============================================================ -->
+    <!-- ABOUT                                                         -->
+    <!-- ============================================================ -->
+    <section class="about" id="about">
+      <div class="section-head">
+        <span class="section-num">§ 03</span>
+        <h2 class="section-title">About this list</h2>
+      </div>
+      <div class="about__grid">
+        <p>
+          This reading list is maintained as a research resource for students,
+          collaborators, and anyone curious about the field of vision-based task
+          assistance. It collects work that has shaped the area, plus recent
+          papers worth knowing.
+        </p>
+        <p>
+          The list is intentionally curated rather than exhaustive. Papers are
+          chosen because they introduce useful problems, datasets, methods, or
+          framings — not by citation count alone.
         </p>
       </div>
-      <div class="vp-viewfinder" aria-hidden="true">
-        <svg viewBox="0 0 240 240" xmlns="http://www.w3.org/2000/svg">
-          <path d="M 10 40 L 10 10 L 40 10"></path>
-          <path d="M 200 10 L 230 10 L 230 40"></path>
-          <path d="M 230 200 L 230 230 L 200 230"></path>
-          <path d="M 40 230 L 10 230 L 10 200"></path>
-          <g class="vf-cross">
-            <line x1="120" y1="60"  x2="120" y2="105"></line>
-            <line x1="120" y1="135" x2="120" y2="180"></line>
-            <line x1="60"  y1="120" x2="105" y2="120"></line>
-            <line x1="135" y1="120" x2="180" y2="120"></line>
-            <circle cx="120" cy="120" r="3"></circle>
-          </g>
-          <rect class="vf-box-inner" x="68" y="70" width="104" height="100"></rect>
-          <g class="vf-ticks">
-            <line x1="60"  y1="20" x2="60"  y2="26"></line>
-            <line x1="90"  y1="20" x2="90"  y2="26"></line>
-            <line x1="150" y1="20" x2="150" y2="26"></line>
-            <line x1="180" y1="20" x2="180" y2="26"></line>
-          </g>
-          <text x="68" y="64">SUBJECT · 01</text>
-          <text x="172" y="184" text-anchor="end">FRAME 027</text>
-        </svg>
+    </section>
+
+    <!-- ============================================================ -->
+    <!-- CONTRIBUTE                                                    -->
+    <!-- ============================================================ -->
+    <section class="contribute" id="contribute">
+      <div class="section-head">
+        <span class="section-num">§ 04</span>
+        <h2 class="section-title">Suggest a paper</h2>
       </div>
-    </div>
+      <p>
+        Spotted a paper that belongs here? Open an issue or a pull request on
+        GitHub adding an entry to <code>assets/papers.js</code>. The schema is
+        documented in the file itself.
+      </p>
+      <a class="contribute__cta" href="#" id="repo-link">
+        <span>Open the repository</span>
+        <span aria-hidden="true">→</span>
+      </a>
+    </section>
 
-    <div class="vp-meta">
-      <div class="vp-meta-item"><span class="vp-meta-num">07</span><span class="vp-meta-label">Papers</span></div>
-      <div class="vp-meta-item"><span class="vp-meta-num">10</span><span class="vp-meta-label">Topics</span></div>
-      <div class="vp-meta-item"><span class="vp-meta-num">May 2026</span><span class="vp-meta-label">Last updated</span></div>
-    </div>
+  </main>
 
-    <!-- Papers section -->
-    <div class="vp-section">
-      <div class="vp-section-head">
-        <span class="vp-section-num">§ 02</span>
-        <h2 class="vp-section-title">The list</h2>
+  <footer class="footer">
+    <div class="footer__inner">
+      <div class="footer__col">
+        <p class="footer__name">VITA · Reading List</p>
+        <p class="footer__sub">Maintained by your-name-here · Northeastern University</p>
       </div>
-
-      <div class="vp-filters-row">
-        <div class="vp-search">⌕ &nbsp;Search by title, author, venue…</div>
-        <div class="vp-sort">Sort · Newest first ▾</div>
-      </div>
-
-      <div class="vp-chips">
-        <span class="vp-chip is-active">All <span class="vp-chip-count">7</span></span>
-        <span class="vp-chip">Temporal Action Segmentation <span class="vp-chip-count">3</span></span>
-        <span class="vp-chip">Action Detection <span class="vp-chip-count">1</span></span>
-        <span class="vp-chip">Mistake Recognition <span class="vp-chip-count">2</span></span>
-        <span class="vp-chip">Skill Assessment <span class="vp-chip-count">1</span></span>
-        <span class="vp-chip">Egocentric Video <span class="vp-chip-count">3</span></span>
-        <span class="vp-chip">Augmented Reality <span class="vp-chip-count">1</span></span>
-        <span class="vp-chip">Action Anticipation <span class="vp-chip-count">1</span></span>
-        <span class="vp-chip">Dataset / Benchmark <span class="vp-chip-count">4</span></span>
-      </div>
-
-      <ol class="vp-papers">
-
-        <li class="vp-paper">
-          <div class="vp-paper-year">2024</div>
-          <div>
-            <h3 class="vp-paper-title">Ego-Exo4D: Understanding Skilled Human Activity from First- and Third-Person Perspectives</h3>
-            <p class="vp-paper-authors">K. Grauman, A. Westbury, L. Torresani, K. Kitani, J. Malik, et al.</p>
-            <div><span class="vp-paper-venue">CVPR</span></div>
-            <p class="vp-paper-tldr">Large-scale paired egocentric and exocentric video dataset of skilled activities, with benchmarks for proficiency estimation, keystep recognition, and more.</p>
-            <div class="vp-paper-foot">
-              <div class="vp-paper-tags">
-                <span class="vp-paper-tag">Dataset / Benchmark</span>
-                <span class="vp-paper-tag">Egocentric Video</span>
-                <span class="vp-paper-tag">Skill Assessment</span>
-              </div>
-              <div class="vp-paper-links">
-                <span class="vp-paper-link">PDF ↗</span>
-                <span class="vp-paper-link">Project ↗</span>
-              </div>
-            </div>
-          </div>
-        </li>
-
-        <li class="vp-paper">
-          <div class="vp-paper-year">2023</div>
-          <div>
-            <h3 class="vp-paper-title">HoloAssist: An Egocentric Human Interaction Dataset for Interactive AI Assistants in the Real World</h3>
-            <p class="vp-paper-authors">X. Wang, T. Kwon, M. Rad, B. Pan, et al.</p>
-            <div><span class="vp-paper-venue">ICCV</span></div>
-            <p class="vp-paper-tldr">Mixed-reality recordings of an instructor guiding a learner through real-world tasks, with annotations for mistakes, interventions, and instructions.</p>
-            <div class="vp-paper-foot">
-              <div class="vp-paper-tags">
-                <span class="vp-paper-tag">Dataset / Benchmark</span>
-                <span class="vp-paper-tag">Egocentric Video</span>
-                <span class="vp-paper-tag">Mistake Recognition</span>
-                <span class="vp-paper-tag">Augmented Reality</span>
-              </div>
-              <div class="vp-paper-links">
-                <span class="vp-paper-link">PDF ↗</span>
-                <span class="vp-paper-link">Project ↗</span>
-              </div>
-            </div>
-          </div>
-        </li>
-
-        <li class="vp-paper">
-          <div class="vp-paper-year">2022</div>
-          <div>
-            <h3 class="vp-paper-title">Ego4D: Around the World in 3,000 Hours of Egocentric Video</h3>
-            <p class="vp-paper-authors">K. Grauman, A. Westbury, E. Byrne, Z. Chavis, et al.</p>
-            <div><span class="vp-paper-venue">CVPR</span></div>
-            <p class="vp-paper-tldr">Massive-scale egocentric video dataset with benchmarks covering episodic memory, hands-and-objects, AV diarization, social, and forecasting tasks.</p>
-            <div class="vp-paper-foot">
-              <div class="vp-paper-tags">
-                <span class="vp-paper-tag">Dataset / Benchmark</span>
-                <span class="vp-paper-tag">Egocentric Video</span>
-                <span class="vp-paper-tag">Action Anticipation</span>
-              </div>
-              <div class="vp-paper-links">
-                <span class="vp-paper-link">PDF ↗</span>
-                <span class="vp-paper-link">Project ↗</span>
-              </div>
-            </div>
-          </div>
-        </li>
-
-        <li class="vp-paper">
-          <div class="vp-paper-year">2022</div>
-          <div>
-            <h3 class="vp-paper-title">Assembly101: A Large-Scale Multi-View Video Dataset for Understanding Procedural Activities</h3>
-            <p class="vp-paper-authors">F. Sener, D. Chatterjee, D. Shelepov, K. He, et al.</p>
-            <div><span class="vp-paper-venue">CVPR</span></div>
-            <p class="vp-paper-tldr">Multi-view dataset of people (dis)assembling toy vehicles, annotated with fine-grained actions and mistakes.</p>
-            <div class="vp-paper-foot">
-              <div class="vp-paper-tags">
-                <span class="vp-paper-tag">Dataset / Benchmark</span>
-                <span class="vp-paper-tag">Temporal Action Segmentation</span>
-                <span class="vp-paper-tag">Mistake Recognition</span>
-              </div>
-              <div class="vp-paper-links">
-                <span class="vp-paper-link">PDF ↗</span>
-                <span class="vp-paper-link">Project ↗</span>
-              </div>
-            </div>
-          </div>
-        </li>
-
-        <li class="vp-paper">
-          <div class="vp-paper-year">2022</div>
-          <div>
-            <h3 class="vp-paper-title">ActionFormer: Localizing Moments of Actions with Transformers</h3>
-            <p class="vp-paper-authors">C. Zhang, J. Wu, Y. Li</p>
-            <div><span class="vp-paper-venue">ECCV</span></div>
-            <p class="vp-paper-tldr">Single-stage transformer that localizes action instances in untrimmed video with multi-scale feature pyramids.</p>
-            <div class="vp-paper-foot">
-              <div class="vp-paper-tags">
-                <span class="vp-paper-tag">Action Detection</span>
-              </div>
-              <div class="vp-paper-links">
-                <span class="vp-paper-link">PDF ↗</span>
-                <span class="vp-paper-link">Code ↗</span>
-              </div>
-            </div>
-          </div>
-        </li>
-
-        <li class="vp-paper">
-          <div class="vp-paper-year">2021</div>
-          <div>
-            <h3 class="vp-paper-title">ASFormer: Transformer for Action Segmentation</h3>
-            <p class="vp-paper-authors">F. Yi, H. Wen, T. Jiang</p>
-            <div><span class="vp-paper-venue">BMVC</span></div>
-            <p class="vp-paper-tldr">Transformer architecture for frame-level action segmentation with hierarchical local attention and a refinement decoder.</p>
-            <div class="vp-paper-foot">
-              <div class="vp-paper-tags">
-                <span class="vp-paper-tag">Temporal Action Segmentation</span>
-              </div>
-              <div class="vp-paper-links">
-                <span class="vp-paper-link">PDF ↗</span>
-                <span class="vp-paper-link">Code ↗</span>
-              </div>
-            </div>
-          </div>
-        </li>
-
-        <li class="vp-paper">
-          <div class="vp-paper-year">2019</div>
-          <div>
-            <h3 class="vp-paper-title">MS-TCN: Multi-Stage Temporal Convolutional Network for Action Segmentation</h3>
-            <p class="vp-paper-authors">Y. Abu Farha, J. Gall</p>
-            <div><span class="vp-paper-venue">CVPR</span></div>
-            <p class="vp-paper-tldr">Foundational dilated TCN with stage-wise refinement — long the standard baseline for temporal action segmentation.</p>
-            <div class="vp-paper-foot">
-              <div class="vp-paper-tags">
-                <span class="vp-paper-tag">Temporal Action Segmentation</span>
-              </div>
-              <div class="vp-paper-links">
-                <span class="vp-paper-link">PDF ↗</span>
-                <span class="vp-paper-link">Code ↗</span>
-              </div>
-            </div>
-          </div>
-        </li>
-
-      </ol>
-    </div>
-
-    <div class="vp-footer">
-      <div>
-        <p class="vp-footer-name">VITA · Reading List</p>
-        <p class="vp-footer-sub">Maintained by your-name-here · Northeastern University</p>
-      </div>
-      <div class="vp-footer-right">
+      <div class="footer__col footer__col--right">
         <p>Built with HTML, CSS, and care.</p>
-        <p>© 2026</p>
+        <p class="footer__year">© <span id="year">2026</span></p>
       </div>
     </div>
+  </footer>
 
-  </div>
-</div>
+  <script src="assets/papers.js"></script>
+  <script src="assets/main.js"></script>
+</body>
+</html>
