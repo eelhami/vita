@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Vision-based Task Assistants — A Curated Reading List</title>
+  <meta name="description" content="A curated reading list of recent and foundational papers on vision-based task assistance: temporal action segmentation, progress estimation, mistake recognition, augmented reality, and more." />
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400;1,9..144,500&family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:ital,wght@0,400;0,500;0,600;1,400&display=swap" />
+
+  <link rel="stylesheet" href="assets/style.css" />
+</head>
+<body>
+
+  <!-- ============================================================ -->
+  <!-- TOP NAV                                                       -->
+  <!-- ============================================================ -->
+  <header class="topnav">
+    <div class="topnav__inner">
+      <a class="topnav__brand" href="#top">
+        <span class="topnav__mark" aria-hidden="true">✦</span>
+        <span class="topnav__name">VITA · Reading List</span>
+      </a>
+      <nav class="topnav__links" aria-label="Primary">
+        <a href="#papers">Papers</a>
+        <a href="#topics">Topics</a>
+        <a href="#about">About</a>
+        <a href="#contribute">Contribute</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="top">
+
+    <!-- ============================================================ -->
+    <!-- HERO                                                          -->
+    <!-- ============================================================ -->
+    <section class="hero">
+      <div class="hero__grid">
+
+        <div class="hero__kicker">
+          <span class="rule"></span>
+          <span class="kicker-text">A Curated Reading List · est. 2026</span>
+        </div>
+
+        <h1 class="hero__title">
+          Vision-based<br />
+          <em>Task Assistants.</em>
+        </h1>
+
+        <p class="hero__lede">
+          A growing, opinionated collection of recent and foundational work on
+          systems that <em>watch what we do</em> and <em>help us do it better</em>:
+          temporal action segmentation, progress estimation, mistake recognition,
+          AR-based guidance, and the egocentric perception that makes it all
+          possible.
+        </p>
+
+        <!-- Decorative crosshair illustration -->
+        <div class="hero__viewfinder" aria-hidden="true">
+          <svg viewBox="0 0 240 240" xmlns="http://www.w3.org/2000/svg">
+            <!-- corner brackets -->
+            <g class="vf-corners">
+              <path d="M 10 40 L 10 10 L 40 10" />
+              <path d="M 200 10 L 230 10 L 230 40" />
+              <path d="M 230 200 L 230 230 L 200 230" />
+              <path d="M 40 230 L 10 230 L 10 200" />
+            </g>
+            <!-- crosshair -->
+            <g class="vf-cross">
+              <line x1="120" y1="60" x2="120" y2="105" />
+              <line x1="120" y1="135" x2="120" y2="180" />
+              <line x1="60" y1="120" x2="105" y2="120" />
+              <line x1="135" y1="120" x2="180" y2="120" />
+              <circle cx="120" cy="120" r="3" />
+            </g>
+            <!-- inner bounding box -->
+            <rect class="vf-box" x="68" y="70" width="104" height="100" />
+            <!-- tick marks -->
+            <g class="vf-ticks">
+              <line x1="60" y1="20" x2="60" y2="26" />
+              <line x1="90" y1="20" x2="90" y2="26" />
+              <line x1="150" y1="20" x2="150" y2="26" />
+              <line x1="180" y1="20" x2="180" y2="26" />
+            </g>
+            <text x="68" y="64" class="vf-label">SUBJECT · 01</text>
+            <text x="172" y="184" text-anchor="end" class="vf-label">FRAME 027</text>
+          </svg>
+        </div>
+
+        <div class="hero__meta">
+          <div class="meta-item">
+            <span class="meta-num" id="meta-count">—</span>
+            <span class="meta-label">Papers</span>
+          </div>
+          <div class="meta-item">
+            <span class="meta-num" id="meta-cats">—</span>
+            <span class="meta-label">Topics</span>
+          </div>
+          <div class="meta-item">
+            <span class="meta-num" id="meta-updated">—</span>
+            <span class="meta-label">Last updated</span>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ============================================================ -->
+    <!-- TOPICS                                                        -->
+    <!-- ============================================================ -->
+    <section class="topics" id="topics">
+      <div class="section-head">
+        <span class="section-num">§ 01</span>
+        <h2 class="section-title">Topics covered</h2>
+      </div>
+      <p class="section-lede">
+        The list spans the perception stack that powers task assistance — from
+        recognizing what's happening, to estimating where you are in a procedure,
+        to flagging when something has gone wrong.
+      </p>
+      <ul class="topics__list">
+        <li><span class="topic-num">/01</span> Temporal Action Segmentation</li>
+        <li><span class="topic-num">/02</span> Action Detection &amp; Recognition</li>
+        <li><span class="topic-num">/03</span> Progress Estimation</li>
+        <li><span class="topic-num">/04</span> Mistake Recognition</li>
+        <li><span class="topic-num">/05</span> Action Anticipation</li>
+        <li><span class="topic-num">/06</span> Skill Assessment</li>
+        <li><span class="topic-num">/07</span> Vision–Language Models</li>
+        <li><span class="topic-num">/08</span> Egocentric Video</li>
+        <li><span class="topic-num">/09</span> Augmented Reality &amp; AR Assistance</li>
+        <li><span class="topic-num">/10</span> Datasets &amp; Benchmarks</li>
+      </ul>
+    </section>
+
+    <!-- ============================================================ -->
+    <!-- PAPERS                                                        -->
+    <!-- ============================================================ -->
+    <section class="papers-section" id="papers">
+      <div class="section-head">
+        <span class="section-num">§ 02</span>
+        <h2 class="section-title">The list</h2>
+      </div>
+
+      <div class="filters">
+        <div class="filters__row">
+          <label class="search">
+            <span class="search__icon" aria-hidden="true">⌕</span>
+            <input
+              id="search"
+              type="search"
+              placeholder="Search by title, author, venue…"
+              autocomplete="off"
+              spellcheck="false"
+            />
+          </label>
+          <div class="sort">
+            <label for="sort">Sort</label>
+            <select id="sort">
+              <option value="year-desc">Newest first</option>
+              <option value="year-asc">Oldest first</option>
+              <option value="title-asc">Title (A → Z)</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="filters__chips" id="chips" role="group" aria-label="Filter by topic">
+          <!-- chips injected by JS -->
+        </div>
+      </div>
+
+      <ol class="papers" id="papers-list">
+        <!-- papers injected by JS -->
+      </ol>
+
+      <p class="papers__empty" id="papers-empty" hidden>
+        No papers match those filters yet.
+      </p>
+    </section>
+
+    <!-- ============================================================ -->
+    <!-- ABOUT                                                         -->
+    <!-- ============================================================ -->
+    <section class="about" id="about">
+      <div class="section-head">
+        <span class="section-num">§ 03</span>
+        <h2 class="section-title">About this list</h2>
+      </div>
+      <div class="about__grid">
+        <p>
+          This reading list is maintained as a research resource for students,
+          collaborators, and anyone curious about the field of vision-based task
+          assistance. It collects work that has shaped the area, plus recent
+          papers worth knowing.
+        </p>
+        <p>
+          The list is intentionally curated rather than exhaustive. Papers are
+          chosen because they introduce useful problems, datasets, methods, or
+          framings — not by citation count alone.
+        </p>
+      </div>
+    </section>
+
+    <!-- ============================================================ -->
+    <!-- CONTRIBUTE                                                    -->
+    <!-- ============================================================ -->
+    <section class="contribute" id="contribute">
+      <div class="section-head">
+        <span class="section-num">§ 04</span>
+        <h2 class="section-title">Suggest a paper</h2>
+      </div>
+      <p>
+        Spotted a paper that belongs here? Open an issue or a pull request on
+        GitHub adding an entry to <code>assets/papers.js</code>. The schema is
+        documented in the file itself.
+      </p>
+      <a class="contribute__cta" href="#" id="repo-link">
+        <span>Open the repository</span>
+        <span aria-hidden="true">→</span>
+      </a>
+    </section>
+
+  </main>
+
+  <footer class="footer">
+    <div class="footer__inner">
+      <div class="footer__col">
+        <p class="footer__name">VITA · Reading List</p>
+        <p class="footer__sub">Maintained by your-name-here · Northeastern University</p>
+      </div>
+      <div class="footer__col footer__col--right">
+        <p>Built with HTML, CSS, and care.</p>
+        <p class="footer__year">© <span id="year">2026</span></p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="assets/papers.js"></script>
+  <script src="assets/main.js"></script>
+</body>
+</html>

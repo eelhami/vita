@@ -11,13 +11,431 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400;1,9..144,500&family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:ital,wght@0,400;0,500;0,600;1,400&display=swap" />
 
-  <link rel="stylesheet" href="assets/style.css" />
+  <style>
+    /* =============================================================
+       Vision-based Task Assistants — Reading List
+       Editorial research-notebook aesthetic
+       ============================================================= */
+
+    :root {
+      --paper:        #F5F1E8;
+      --paper-deep:   #EBE4D2;
+      --ink:          #1A1815;
+      --ink-soft:     #3A352C;
+      --muted:        #7A7264;
+      --muted-soft:   #B5AC9C;
+      --rule:         #D9D1BE;
+      --rule-soft:    #E4DDC9;
+      --accent:       #C8341A;   /* vermilion */
+      --accent-soft:  #F3DAD3;
+
+      --serif: 'Fraunces', 'Iowan Old Style', Georgia, serif;
+      --sans:  'IBM Plex Sans', system-ui, sans-serif;
+      --mono:  'IBM Plex Mono', ui-monospace, Menlo, monospace;
+
+      --maxw: 1180px;
+      --gutter: clamp(1.25rem, 4vw, 3rem);
+    }
+
+    *, *::before, *::after { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      font-family: var(--sans);
+      color: var(--ink);
+      background: var(--paper);
+      line-height: 1.55;
+      font-size: 16px;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      background-image:
+        radial-gradient(circle at 10% 0%, rgba(200,52,26,0.025) 0, transparent 40%),
+        radial-gradient(circle at 90% 100%, rgba(26,24,21,0.03) 0, transparent 40%);
+      background-attachment: fixed;
+    }
+    ::selection { background: var(--ink); color: var(--paper); }
+    a { color: inherit; text-decoration: none; }
+    button { font: inherit; cursor: pointer; }
+    input, select { font: inherit; color: inherit; }
+
+    /* Top nav */
+    .topnav {
+      position: sticky; top: 0; z-index: 50;
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      background: rgba(245, 241, 232, 0.78);
+      border-bottom: 1px solid var(--rule-soft);
+    }
+    .topnav__inner {
+      max-width: var(--maxw); margin: 0 auto;
+      padding: 0.9rem var(--gutter);
+      display: flex; align-items: center; justify-content: space-between;
+      gap: 1rem;
+    }
+    .topnav__brand {
+      display: inline-flex; align-items: center; gap: 0.55rem;
+      font-family: var(--mono); font-size: 0.78rem;
+      letter-spacing: 0.08em; text-transform: uppercase;
+    }
+    .topnav__mark { color: var(--accent); font-size: 1rem; }
+    .topnav__links {
+      display: flex; gap: 1.5rem;
+      font-family: var(--mono); font-size: 0.78rem;
+      letter-spacing: 0.06em; text-transform: uppercase;
+    }
+    .topnav__links a {
+      color: var(--ink-soft); transition: color 0.18s ease; position: relative;
+    }
+    .topnav__links a:hover { color: var(--accent); }
+    .topnav__links a:hover::after {
+      content: ''; position: absolute; left: 0; right: 0; bottom: -4px;
+      height: 1px; background: var(--accent);
+    }
+    @media (max-width: 600px) { .topnav__links { display: none; } }
+
+    /* Hero */
+    .hero {
+      max-width: var(--maxw); margin: 0 auto;
+      padding: clamp(2.5rem, 6vw, 5rem) var(--gutter) clamp(2rem, 5vw, 4rem);
+    }
+    .hero__grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr);
+      gap: clamp(1.5rem, 4vw, 3.5rem) clamp(1.5rem, 4vw, 4rem);
+      align-items: start;
+    }
+    .hero__kicker {
+      grid-column: 1 / -1;
+      display: flex; align-items: center; gap: 1rem;
+      font-family: var(--mono); font-size: 0.75rem;
+      letter-spacing: 0.12em; text-transform: uppercase;
+      color: var(--muted);
+    }
+    .hero__kicker .rule {
+      display: inline-block; width: 2.5rem; height: 1px; background: var(--ink);
+    }
+    .hero__title {
+      grid-column: 1 / 2;
+      font-family: var(--serif); font-weight: 500;
+      font-size: clamp(3rem, 9vw, 7rem);
+      line-height: 0.95; letter-spacing: -0.025em; margin: 0;
+      font-variation-settings: "opsz" 144;
+    }
+    .hero__title em {
+      font-style: italic; color: var(--ink); position: relative;
+    }
+    .hero__title em::after {
+      content: ''; position: absolute; bottom: 0.08em; left: 0;
+      height: 0.12em; width: 100%; background: var(--accent);
+      z-index: -1; opacity: 0.85;
+    }
+    .hero__lede {
+      grid-column: 1 / 2;
+      font-size: 1.125rem; line-height: 1.6;
+      color: var(--ink-soft); max-width: 38em; margin: 0;
+    }
+    .hero__lede em { font-family: var(--serif); font-style: italic; color: var(--ink); }
+    .hero__viewfinder {
+      grid-column: 2 / 3; grid-row: 2 / 5;
+      align-self: start; justify-self: end;
+      width: min(100%, 280px); aspect-ratio: 1 / 1;
+    }
+    .hero__viewfinder svg { width: 100%; height: 100%; }
+    .vf-corners path, .vf-cross line, .vf-ticks line, .vf-box {
+      stroke: var(--ink); fill: none; stroke-width: 1;
+    }
+    .vf-box {
+      stroke: var(--accent); stroke-width: 1.25; stroke-dasharray: 4 3;
+    }
+    .vf-cross circle { fill: var(--accent); stroke: none; }
+    .vf-label {
+      font-family: 'IBM Plex Mono', monospace; font-size: 8px;
+      fill: var(--muted); letter-spacing: 0.1em;
+    }
+    @media (max-width: 760px) {
+      .hero__grid { grid-template-columns: 1fr; }
+      .hero__viewfinder {
+        grid-column: 1 / -1; grid-row: auto;
+        order: -1; justify-self: start; width: 180px;
+      }
+    }
+    .hero__meta {
+      grid-column: 1 / -1;
+      margin-top: clamp(1.5rem, 4vw, 2.5rem);
+      padding-top: 1.5rem;
+      border-top: 1px solid var(--rule);
+      display: flex; gap: clamp(1.5rem, 5vw, 4rem); flex-wrap: wrap;
+    }
+    .meta-item { display: flex; flex-direction: column; gap: 0.25rem; }
+    .meta-num {
+      font-family: var(--serif); font-size: 1.65rem; font-weight: 500;
+      font-variation-settings: "opsz" 144; line-height: 1;
+    }
+    .meta-label {
+      font-family: var(--mono); font-size: 0.72rem;
+      letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted);
+    }
+
+    /* Section heads */
+    .section-head {
+      display: flex; align-items: baseline; gap: 1.25rem; margin-bottom: 1.5rem;
+    }
+    .section-num {
+      font-family: var(--mono); font-size: 0.78rem;
+      letter-spacing: 0.1em; text-transform: uppercase; color: var(--accent);
+    }
+    .section-title {
+      font-family: var(--serif); font-weight: 500;
+      font-size: clamp(1.65rem, 3vw, 2.25rem); letter-spacing: -0.015em;
+      margin: 0; font-variation-settings: "opsz" 72;
+    }
+    .section-lede {
+      font-size: 1.05rem; color: var(--ink-soft);
+      max-width: 50em; margin: 0 0 2rem;
+    }
+
+    /* Topics */
+    .topics {
+      max-width: var(--maxw); margin: 0 auto;
+      padding: clamp(2rem, 5vw, 4rem) var(--gutter);
+      border-top: 1px solid var(--rule);
+    }
+    .topics__list {
+      list-style: none; padding: 0; margin: 0;
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(min(100%, 250px), 1fr));
+      gap: 0; border-top: 1px solid var(--rule-soft);
+    }
+    .topics__list li {
+      display: flex; align-items: baseline; gap: 1rem;
+      padding: 1rem 0.5rem;
+      border-bottom: 1px solid var(--rule-soft);
+      font-family: var(--serif); font-size: 1.15rem; font-weight: 500;
+      font-variation-settings: "opsz" 36;
+      transition: color 0.18s ease, padding-left 0.18s ease;
+    }
+    .topics__list li:hover { color: var(--accent); padding-left: 1rem; }
+    .topic-num {
+      font-family: var(--mono); font-size: 0.72rem; font-weight: 500;
+      color: var(--muted); letter-spacing: 0.08em;
+    }
+
+    /* Papers section */
+    .papers-section {
+      max-width: var(--maxw); margin: 0 auto;
+      padding: clamp(2rem, 5vw, 4rem) var(--gutter);
+      border-top: 1px solid var(--rule);
+    }
+    .filters { margin-bottom: 2.5rem; }
+    .filters__row {
+      display: flex; gap: 1rem; align-items: center; flex-wrap: wrap;
+      padding-bottom: 1.25rem; border-bottom: 1px solid var(--rule-soft);
+    }
+    .search {
+      flex: 1 1 300px;
+      display: flex; align-items: center; gap: 0.5rem;
+      padding: 0.6rem 0.85rem;
+      background: var(--paper-deep);
+      border: 1px solid transparent; border-radius: 2px;
+      transition: border-color 0.18s ease, background 0.18s ease;
+    }
+    .search:focus-within { border-color: var(--ink); background: var(--paper); }
+    .search__icon { color: var(--muted); font-size: 1.1rem; }
+    .search input {
+      flex: 1; border: 0; background: transparent; outline: none; font-size: 0.95rem;
+    }
+    .search input::placeholder { color: var(--muted-soft); }
+    .sort {
+      display: inline-flex; align-items: center; gap: 0.5rem;
+      font-family: var(--mono); font-size: 0.78rem;
+      letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted);
+    }
+    .sort select {
+      background: transparent; border: 1px solid var(--rule);
+      padding: 0.5rem 0.7rem; border-radius: 2px;
+      font-family: var(--mono); font-size: 0.78rem;
+      letter-spacing: 0.04em; text-transform: uppercase;
+      color: var(--ink); cursor: pointer;
+    }
+    .sort select:hover { border-color: var(--ink); }
+    .filters__chips {
+      margin-top: 1.25rem;
+      display: flex; flex-wrap: wrap; gap: 0.5rem 0.65rem;
+    }
+    .chip {
+      display: inline-flex; align-items: center; gap: 0.4rem;
+      padding: 0.4rem 0.75rem;
+      background: transparent; border: 1px solid var(--rule);
+      border-radius: 999px;
+      font-family: var(--mono); font-size: 0.74rem;
+      letter-spacing: 0.04em; color: var(--ink-soft);
+      cursor: pointer; transition: all 0.18s ease;
+    }
+    .chip:hover { border-color: var(--ink); color: var(--ink); }
+    .chip.is-active {
+      background: var(--ink); border-color: var(--ink); color: var(--paper);
+    }
+    .chip__count { font-size: 0.7rem; color: var(--muted); opacity: 0.8; }
+    .chip.is-active .chip__count { color: var(--muted-soft); }
+
+    .papers {
+      list-style: none; padding: 0; margin: 0; counter-reset: paper;
+    }
+    .paper {
+      counter-increment: paper;
+      position: relative;
+      display: grid; grid-template-columns: 4.5rem 1fr;
+      gap: 1.5rem; padding: 1.75rem 0;
+      border-bottom: 1px solid var(--rule-soft);
+      transition: padding-left 0.2s ease;
+    }
+    .paper::before {
+      content: ''; position: absolute; left: 0;
+      top: 1.75rem; bottom: 1.75rem; width: 2px;
+      background: var(--accent);
+      transform: scaleY(0); transform-origin: top;
+      transition: transform 0.25s cubic-bezier(0.2, 0.6, 0.2, 1);
+    }
+    .paper:hover { padding-left: 1rem; }
+    .paper:hover::before { transform: scaleY(1); }
+    .paper__year {
+      font-family: var(--mono); font-size: 0.95rem; font-weight: 500;
+      color: var(--ink); padding-top: 0.35rem; letter-spacing: 0.02em;
+    }
+    .paper__body { min-width: 0; }
+    .paper__title {
+      font-family: var(--serif); font-weight: 500;
+      font-size: clamp(1.2rem, 2vw, 1.5rem); line-height: 1.25;
+      letter-spacing: -0.01em; margin: 0 0 0.5rem;
+      font-variation-settings: "opsz" 36; color: var(--ink);
+    }
+    .paper__authors {
+      font-style: italic; color: var(--ink-soft);
+      font-size: 0.98rem; margin: 0 0 0.5rem;
+    }
+    .paper__venue {
+      display: inline-block;
+      font-family: var(--mono); font-size: 0.72rem;
+      letter-spacing: 0.06em; text-transform: uppercase;
+      padding: 0.2rem 0.5rem;
+      border: 1px solid var(--rule); color: var(--ink-soft);
+      margin-right: 0.5rem; border-radius: 2px;
+    }
+    .paper__tldr {
+      margin: 0.75rem 0 0; color: var(--ink-soft);
+      font-size: 0.98rem; line-height: 1.55; max-width: 56em;
+    }
+    .paper__foot {
+      margin-top: 0.85rem;
+      display: flex; flex-wrap: wrap; gap: 0.5rem 1rem; align-items: center;
+    }
+    .paper__tags { display: flex; flex-wrap: wrap; gap: 0.4rem; }
+    .paper__tag {
+      font-family: var(--mono); font-size: 0.68rem;
+      letter-spacing: 0.06em; text-transform: uppercase;
+      color: var(--muted); padding: 0.15rem 0;
+    }
+    .paper__tag::before { content: '#'; opacity: 0.6; margin-right: 0.1rem; }
+    .paper__links { display: flex; gap: 0.85rem; margin-left: auto; }
+    .paper__link {
+      font-family: var(--mono); font-size: 0.78rem;
+      letter-spacing: 0.06em; text-transform: uppercase;
+      color: var(--ink);
+      border-bottom: 1px solid var(--ink); padding-bottom: 1px;
+      transition: color 0.15s ease, border-color 0.15s ease;
+    }
+    .paper__link:hover { color: var(--accent); border-color: var(--accent); }
+    @media (max-width: 560px) {
+      .paper { grid-template-columns: 1fr; gap: 0.5rem; }
+      .paper__year { padding-top: 0; }
+      .paper__links { margin-left: 0; }
+    }
+    .papers__empty {
+      padding: 3rem 0; text-align: center; color: var(--muted);
+      font-style: italic; font-family: var(--serif); font-size: 1.1rem;
+    }
+
+    /* About / contribute / footer */
+    .about {
+      max-width: var(--maxw); margin: 0 auto;
+      padding: clamp(2rem, 5vw, 4rem) var(--gutter);
+      border-top: 1px solid var(--rule);
+    }
+    .about__grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(min(100%, 320px), 1fr));
+      gap: 2rem; font-size: 1.05rem; color: var(--ink-soft);
+      max-width: 62em;
+    }
+    .about__grid p { margin: 0; }
+    .contribute {
+      max-width: var(--maxw); margin: 0 auto;
+      padding: clamp(2rem, 5vw, 4rem) var(--gutter) clamp(3rem, 6vw, 5rem);
+      border-top: 1px solid var(--rule);
+    }
+    .contribute p {
+      font-size: 1.05rem; color: var(--ink-soft); max-width: 50em;
+    }
+    .contribute code {
+      font-family: var(--mono); font-size: 0.9em;
+      padding: 0.1em 0.35em; background: var(--paper-deep); border-radius: 2px;
+    }
+    .contribute__cta {
+      display: inline-flex; align-items: center; gap: 0.6rem;
+      margin-top: 1.25rem; padding: 0.85rem 1.3rem;
+      background: var(--ink); color: var(--paper);
+      font-family: var(--mono); font-size: 0.78rem;
+      letter-spacing: 0.08em; text-transform: uppercase; border-radius: 2px;
+      transition: background 0.18s ease, transform 0.18s ease;
+    }
+    .contribute__cta:hover { background: var(--accent); transform: translateX(2px); }
+    .footer {
+      background: var(--ink); color: var(--paper);
+      padding: clamp(2rem, 4vw, 3rem) 0;
+    }
+    .footer__inner {
+      max-width: var(--maxw); margin: 0 auto;
+      padding: 0 var(--gutter);
+      display: flex; justify-content: space-between; align-items: flex-end;
+      gap: 2rem; flex-wrap: wrap;
+    }
+    .footer__name {
+      font-family: var(--serif); font-weight: 500; font-size: 1.4rem;
+      margin: 0 0 0.25rem; font-variation-settings: "opsz" 72;
+    }
+    .footer__sub {
+      font-family: var(--mono); font-size: 0.78rem;
+      letter-spacing: 0.06em; color: var(--muted-soft); margin: 0;
+    }
+    .footer__col--right {
+      text-align: right;
+      font-family: var(--mono); font-size: 0.78rem;
+      letter-spacing: 0.06em; color: var(--muted-soft);
+    }
+    .footer__col--right p { margin: 0.15rem 0; }
+    .footer__year { color: var(--paper); }
+
+    /* Entrance animation */
+    @media (prefers-reduced-motion: no-preference) {
+      .hero__kicker, .hero__title, .hero__lede, .hero__viewfinder, .hero__meta {
+        opacity: 0; transform: translateY(12px);
+        animation: rise 0.7s cubic-bezier(0.2, 0.6, 0.2, 1) forwards;
+      }
+      .hero__kicker     { animation-delay: 0.05s; }
+      .hero__title      { animation-delay: 0.15s; }
+      .hero__viewfinder { animation-delay: 0.25s; }
+      .hero__lede       { animation-delay: 0.35s; }
+      .hero__meta       { animation-delay: 0.45s; }
+      .vf-box { animation: pulse 3.5s ease-in-out infinite; }
+    }
+    @keyframes rise { to { opacity: 1; transform: translateY(0); } }
+    @keyframes pulse {
+      0%, 100% { opacity: 1; } 50% { opacity: 0.55; }
+    }
+  </style>
 </head>
 <body>
 
-  <!-- ============================================================ -->
-  <!-- TOP NAV                                                       -->
-  <!-- ============================================================ -->
   <header class="topnav">
     <div class="topnav__inner">
       <a class="topnav__brand" href="#top">
@@ -35,15 +453,11 @@
 
   <main id="top">
 
-    <!-- ============================================================ -->
-    <!-- HERO                                                          -->
-    <!-- ============================================================ -->
     <section class="hero">
       <div class="hero__grid">
-
         <div class="hero__kicker">
           <span class="rule"></span>
-          <span class="kicker-text">A Curated Reading List · est. 2026</span>
+          <span>A Curated Reading List · est. 2026</span>
         </div>
 
         <h1 class="hero__title">
@@ -59,17 +473,14 @@
           possible.
         </p>
 
-        <!-- Decorative crosshair illustration -->
         <div class="hero__viewfinder" aria-hidden="true">
           <svg viewBox="0 0 240 240" xmlns="http://www.w3.org/2000/svg">
-            <!-- corner brackets -->
             <g class="vf-corners">
               <path d="M 10 40 L 10 10 L 40 10" />
               <path d="M 200 10 L 230 10 L 230 40" />
               <path d="M 230 200 L 230 230 L 200 230" />
               <path d="M 40 230 L 10 230 L 10 200" />
             </g>
-            <!-- crosshair -->
             <g class="vf-cross">
               <line x1="120" y1="60" x2="120" y2="105" />
               <line x1="120" y1="135" x2="120" y2="180" />
@@ -77,9 +488,7 @@
               <line x1="135" y1="120" x2="180" y2="120" />
               <circle cx="120" cy="120" r="3" />
             </g>
-            <!-- inner bounding box -->
             <rect class="vf-box" x="68" y="70" width="104" height="100" />
-            <!-- tick marks -->
             <g class="vf-ticks">
               <line x1="60" y1="20" x2="60" y2="26" />
               <line x1="90" y1="20" x2="90" y2="26" />
@@ -105,13 +514,9 @@
             <span class="meta-label">Last updated</span>
           </div>
         </div>
-
       </div>
     </section>
 
-    <!-- ============================================================ -->
-    <!-- TOPICS                                                        -->
-    <!-- ============================================================ -->
     <section class="topics" id="topics">
       <div class="section-head">
         <span class="section-num">§ 01</span>
@@ -136,9 +541,6 @@
       </ul>
     </section>
 
-    <!-- ============================================================ -->
-    <!-- PAPERS                                                        -->
-    <!-- ============================================================ -->
     <section class="papers-section" id="papers">
       <div class="section-head">
         <span class="section-num">§ 02</span>
@@ -149,13 +551,7 @@
         <div class="filters__row">
           <label class="search">
             <span class="search__icon" aria-hidden="true">⌕</span>
-            <input
-              id="search"
-              type="search"
-              placeholder="Search by title, author, venue…"
-              autocomplete="off"
-              spellcheck="false"
-            />
+            <input id="search" type="search" placeholder="Search by title, author, venue…" autocomplete="off" spellcheck="false" />
           </label>
           <div class="sort">
             <label for="sort">Sort</label>
@@ -166,24 +562,13 @@
             </select>
           </div>
         </div>
-
-        <div class="filters__chips" id="chips" role="group" aria-label="Filter by topic">
-          <!-- chips injected by JS -->
-        </div>
+        <div class="filters__chips" id="chips" role="group" aria-label="Filter by topic"></div>
       </div>
 
-      <ol class="papers" id="papers-list">
-        <!-- papers injected by JS -->
-      </ol>
-
-      <p class="papers__empty" id="papers-empty" hidden>
-        No papers match those filters yet.
-      </p>
+      <ol class="papers" id="papers-list"></ol>
+      <p class="papers__empty" id="papers-empty" hidden>No papers match those filters yet.</p>
     </section>
 
-    <!-- ============================================================ -->
-    <!-- ABOUT                                                         -->
-    <!-- ============================================================ -->
     <section class="about" id="about">
       <div class="section-head">
         <span class="section-num">§ 03</span>
@@ -204,9 +589,6 @@
       </div>
     </section>
 
-    <!-- ============================================================ -->
-    <!-- CONTRIBUTE                                                    -->
-    <!-- ============================================================ -->
     <section class="contribute" id="contribute">
       <div class="section-head">
         <span class="section-num">§ 04</span>
@@ -214,8 +596,8 @@
       </div>
       <p>
         Spotted a paper that belongs here? Open an issue or a pull request on
-        GitHub adding an entry to <code>assets/papers.js</code>. The schema is
-        documented in the file itself.
+        GitHub adding an entry to the <code>PAPERS</code> array in
+        <code>index.html</code>.
       </p>
       <a class="contribute__cta" href="#" id="repo-link">
         <span>Open the repository</span>
@@ -227,18 +609,330 @@
 
   <footer class="footer">
     <div class="footer__inner">
-      <div class="footer__col">
+      <div>
         <p class="footer__name">VITA · Reading List</p>
         <p class="footer__sub">Maintained by your-name-here · Northeastern University</p>
       </div>
-      <div class="footer__col footer__col--right">
+      <div class="footer__col--right">
         <p>Built with HTML, CSS, and care.</p>
         <p class="footer__year">© <span id="year">2026</span></p>
       </div>
     </div>
   </footer>
 
-  <script src="assets/papers.js"></script>
-  <script src="assets/main.js"></script>
+  <script>
+    /* =================================================================
+       PAPERS DATA  —  EDIT THIS BLOCK TO ADD/REMOVE PAPERS
+       -----------------------------------------------------------------
+       Schema for each entry:
+         {
+           title:      "Paper title",
+           authors:    "A. Author, B. Author, ...",
+           venue:      "CVPR",                      // venue acronym
+           year:       2025,
+           categories: ["temporal-action-segmentation", "egocentric"],
+           links: {
+             pdf:     "https://arxiv.org/abs/...",
+             code:    "https://github.com/...",    // optional
+             project: "https://project-page.com",  // optional
+           },
+           tldr: "One-line summary in your own words." // optional
+         }
+
+       Valid category slugs (must match exactly):
+         temporal-action-segmentation, action-detection,
+         progress-estimation, mistake-recognition,
+         action-anticipation, skill-assessment, vision-language,
+         egocentric, augmented-reality, dataset
+       ================================================================= */
+
+    const CATEGORIES = {
+      "temporal-action-segmentation": "Temporal Action Segmentation",
+      "action-detection":             "Action Detection",
+      "progress-estimation":          "Progress Estimation",
+      "mistake-recognition":          "Mistake Recognition",
+      "action-anticipation":          "Action Anticipation",
+      "skill-assessment":             "Skill Assessment",
+      "vision-language":              "Vision–Language",
+      "egocentric":                   "Egocentric Video",
+      "augmented-reality":            "Augmented Reality",
+      "dataset":                      "Dataset / Benchmark",
+    };
+
+    const LAST_UPDATED = "May 2026";
+
+    const PAPERS = [
+
+      /* ----- starter examples — verify and edit before publishing ----- */
+
+      {
+        title: "Ego-Exo4D: Understanding Skilled Human Activity from First- and Third-Person Perspectives",
+        authors: "K. Grauman, A. Westbury, L. Torresani, K. Kitani, J. Malik, et al.",
+        venue: "CVPR",
+        year: 2024,
+        categories: ["dataset", "egocentric", "skill-assessment"],
+        links: {
+          pdf: "https://arxiv.org/abs/2311.18259",
+          project: "https://ego-exo4d-data.org/",
+        },
+        tldr: "Large-scale paired egocentric and exocentric video dataset of skilled activities, with benchmarks for proficiency estimation, keystep recognition, and more."
+      },
+
+      {
+        title: "HoloAssist: An Egocentric Human Interaction Dataset for Interactive AI Assistants in the Real World",
+        authors: "X. Wang, T. Kwon, M. Rad, B. Pan, et al.",
+        venue: "ICCV",
+        year: 2023,
+        categories: ["dataset", "egocentric", "mistake-recognition", "augmented-reality"],
+        links: {
+          pdf: "https://arxiv.org/abs/2309.17024",
+          project: "https://holoassist.github.io/",
+        },
+        tldr: "Mixed-reality recordings of an instructor guiding a learner through real-world tasks, with annotations for mistakes, interventions, and instructions."
+      },
+
+      {
+        title: "Ego4D: Around the World in 3,000 Hours of Egocentric Video",
+        authors: "K. Grauman, A. Westbury, E. Byrne, Z. Chavis, et al.",
+        venue: "CVPR",
+        year: 2022,
+        categories: ["dataset", "egocentric", "action-anticipation"],
+        links: {
+          pdf: "https://arxiv.org/abs/2110.07058",
+          project: "https://ego4d-data.org/",
+        },
+        tldr: "Massive-scale egocentric video dataset with benchmarks covering episodic memory, hands-and-objects, AV diarization, social, and forecasting tasks."
+      },
+
+      {
+        title: "Assembly101: A Large-Scale Multi-View Video Dataset for Understanding Procedural Activities",
+        authors: "F. Sener, D. Chatterjee, D. Shelepov, K. He, et al.",
+        venue: "CVPR",
+        year: 2022,
+        categories: ["dataset", "temporal-action-segmentation", "mistake-recognition"],
+        links: {
+          pdf: "https://arxiv.org/abs/2203.14712",
+          project: "https://assembly-101.github.io/",
+        },
+        tldr: "Multi-view dataset of people (dis)assembling toy vehicles, annotated with fine-grained actions and mistakes."
+      },
+
+      {
+        title: "ActionFormer: Localizing Moments of Actions with Transformers",
+        authors: "C. Zhang, J. Wu, Y. Li",
+        venue: "ECCV",
+        year: 2022,
+        categories: ["action-detection"],
+        links: {
+          pdf: "https://arxiv.org/abs/2202.07925",
+          code: "https://github.com/happyharrycn/actionformer_release",
+        },
+        tldr: "Single-stage transformer that localizes action instances in untrimmed video with multi-scale feature pyramids."
+      },
+
+      {
+        title: "ASFormer: Transformer for Action Segmentation",
+        authors: "F. Yi, H. Wen, T. Jiang",
+        venue: "BMVC",
+        year: 2021,
+        categories: ["temporal-action-segmentation"],
+        links: {
+          pdf: "https://arxiv.org/abs/2110.08568",
+          code: "https://github.com/ChinaYi/ASFormer",
+        },
+        tldr: "Transformer architecture for frame-level action segmentation with hierarchical local attention and a refinement decoder."
+      },
+
+      {
+        title: "MS-TCN: Multi-Stage Temporal Convolutional Network for Action Segmentation",
+        authors: "Y. Abu Farha, J. Gall",
+        venue: "CVPR",
+        year: 2019,
+        categories: ["temporal-action-segmentation"],
+        links: {
+          pdf: "https://arxiv.org/abs/1903.01945",
+          code: "https://github.com/yabufarha/ms-tcn",
+        },
+        tldr: "Foundational dilated TCN with stage-wise refinement — long the standard baseline for temporal action segmentation."
+      },
+
+      /* ----- add your papers below this line ----- */
+
+    ];
+
+    /* =================================================================
+       Rendering & filtering logic (no need to edit below)
+       ================================================================= */
+
+    (function () {
+      'use strict';
+
+      const state = {
+        activeCategories: new Set(),
+        query: '',
+        sort: 'year-desc',
+      };
+
+      const $list   = document.getElementById('papers-list');
+      const $empty  = document.getElementById('papers-empty');
+      const $chips  = document.getElementById('chips');
+      const $search = document.getElementById('search');
+      const $sort   = document.getElementById('sort');
+
+      document.getElementById('meta-count').textContent =
+        String(PAPERS.length).padStart(2, '0');
+      document.getElementById('meta-cats').textContent =
+        String(Object.keys(CATEGORIES).length).padStart(2, '0');
+      document.getElementById('meta-updated').textContent = LAST_UPDATED;
+      document.getElementById('year').textContent = new Date().getFullYear();
+
+      function buildChips() {
+        const counts = {};
+        Object.keys(CATEGORIES).forEach(k => (counts[k] = 0));
+        PAPERS.forEach(p =>
+          (p.categories || []).forEach(c => {
+            if (counts[c] !== undefined) counts[c] += 1;
+          })
+        );
+
+        const frag = document.createDocumentFragment();
+
+        const allBtn = document.createElement('button');
+        allBtn.className = 'chip is-active';
+        allBtn.dataset.cat = '__all';
+        allBtn.innerHTML = 'All <span class="chip__count">' + PAPERS.length + '</span>';
+        frag.appendChild(allBtn);
+
+        Object.entries(CATEGORIES).forEach(([slug, label]) => {
+          const btn = document.createElement('button');
+          btn.className = 'chip';
+          btn.dataset.cat = slug;
+          btn.innerHTML = label + ' <span class="chip__count">' + counts[slug] + '</span>';
+          frag.appendChild(btn);
+        });
+
+        $chips.appendChild(frag);
+
+        $chips.addEventListener('click', (e) => {
+          const btn = e.target.closest('.chip');
+          if (!btn) return;
+          const cat = btn.dataset.cat;
+          if (cat === '__all') {
+            state.activeCategories.clear();
+          } else {
+            if (state.activeCategories.has(cat)) {
+              state.activeCategories.delete(cat);
+            } else {
+              state.activeCategories.add(cat);
+            }
+          }
+          syncChipsUI();
+          render();
+        });
+      }
+
+      function syncChipsUI() {
+        $chips.querySelectorAll('.chip').forEach(btn => {
+          const cat = btn.dataset.cat;
+          if (cat === '__all') {
+            btn.classList.toggle('is-active', state.activeCategories.size === 0);
+          } else {
+            btn.classList.toggle('is-active', state.activeCategories.has(cat));
+          }
+        });
+      }
+
+      function filtered() {
+        const q = state.query.trim().toLowerCase();
+        let list = PAPERS.filter(p => {
+          if (state.activeCategories.size > 0) {
+            const hits = (p.categories || []).some(c => state.activeCategories.has(c));
+            if (!hits) return false;
+          }
+          if (q) {
+            const hay = [
+              p.title, p.authors, p.venue, String(p.year),
+              (p.categories || []).map(c => CATEGORIES[c] || c).join(' '),
+              p.tldr || ''
+            ].join(' ').toLowerCase();
+            if (!hay.includes(q)) return false;
+          }
+          return true;
+        });
+
+        switch (state.sort) {
+          case 'year-asc':
+            list.sort((a, b) => (a.year - b.year) || a.title.localeCompare(b.title));
+            break;
+          case 'title-asc':
+            list.sort((a, b) => a.title.localeCompare(b.title));
+            break;
+          case 'year-desc':
+          default:
+            list.sort((a, b) => (b.year - a.year) || a.title.localeCompare(b.title));
+        }
+        return list;
+      }
+
+      function escapeHtml(str) {
+        return String(str)
+          .replace(/&/g, '&amp;')
+          .replace(/</g, '&lt;')
+          .replace(/>/g, '&gt;')
+          .replace(/"/g, '&quot;')
+          .replace(/'/g, '&#39;');
+      }
+
+      function paperHTML(p) {
+        const tags = (p.categories || [])
+          .map(c => '<span class="paper__tag">' + (CATEGORIES[c] || c) + '</span>')
+          .join('');
+
+        const linkOrder = [['pdf', 'PDF'], ['code', 'Code'], ['project', 'Project']];
+        const links = linkOrder
+          .filter(([key]) => p.links && p.links[key])
+          .map(([key, label]) =>
+            '<a class="paper__link" href="' + p.links[key] + '" target="_blank" rel="noopener">' + label + ' ↗</a>'
+          )
+          .join('');
+
+        const venue = p.venue ? '<span class="paper__venue">' + escapeHtml(p.venue) + '</span>' : '';
+        const tldr  = p.tldr  ? '<p class="paper__tldr">' + escapeHtml(p.tldr) + '</p>' : '';
+
+        return (
+          '<li class="paper">' +
+            '<div class="paper__year">' + p.year + '</div>' +
+            '<div class="paper__body">' +
+              '<h3 class="paper__title">' + escapeHtml(p.title) + '</h3>' +
+              '<p class="paper__authors">' + escapeHtml(p.authors) + '</p>' +
+              '<div>' + venue + '</div>' +
+              tldr +
+              '<div class="paper__foot">' +
+                '<div class="paper__tags">' + tags + '</div>' +
+                '<div class="paper__links">' + links + '</div>' +
+              '</div>' +
+            '</div>' +
+          '</li>'
+        );
+      }
+
+      function render() {
+        const list = filtered();
+        if (list.length === 0) {
+          $list.innerHTML = '';
+          $empty.hidden = false;
+          return;
+        }
+        $empty.hidden = true;
+        $list.innerHTML = list.map(paperHTML).join('');
+      }
+
+      $search.addEventListener('input', (e) => { state.query = e.target.value; render(); });
+      $sort.addEventListener('change', (e) => { state.sort = e.target.value; render(); });
+
+      buildChips();
+      render();
+    })();
+  </script>
 </body>
 </html>
