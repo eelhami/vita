@@ -628,7 +628,7 @@
        ================================================================= */
 
     const CATEGORIES = {
-      "temporal-action-segmentation": "Temporal Action Segmentation",
+      "tas": 			      "Temporal Action Segmentation",
       "action-detection":             "Action Detection",
       "progress-estimation":          "Progress Estimation",
       "mistake-recognition":          "Mistake Recognition",
@@ -636,6 +636,7 @@
       "skill-assessment":             "Skill Assessment",
       "vision-language":              "Vision–Language",
       "egocentric":                   "Egocentric Video",
+      "procedural":                   "Procedural Video",
       "augmented-reality":            "Augmented Reality",
       "dataset":                      "Dataset / Benchmark",
     };
@@ -643,6 +644,43 @@
     const PAPERS = [
 
       /* ----- starter examples — verify and edit before publishing ----- */
+
+
+      {
+        title: "Error Detection in Egocentric Procedural Task Videos",
+        venue: "CVPR",
+        year: 2024,
+        categories: ["mistake-recognition", "tas", "egocentric", "dataset"],
+        links: {
+          pdf: "https://openaccess.thecvf.com/content/CVPR2024/papers/Lee_Error_Detection_in_Egocentric_Procedural_Task_Videos_CVPR_2024_paper.pdf",
+          project: "https://github.com/robert80203/EgoPER_official",
+        },
+        tldr: "Introduces a new egocentric dataset (EgoPER) of kitchen activities that contain mistakes. Studies a framework for detecting mistakes by learning from normal videos only."
+      },
+
+      {
+        title: "Progress-Aware Online Action Segmentation for Egocentric Procedural Task Videos",
+        venue: "CVPR",
+        year: 2024,
+        categories: ["tas", "egocentric"],
+        links: {
+          pdf: "https://openaccess.thecvf.com/content/CVPR2024/papers/Shen_Progress-Aware_Online_Action_Segmentation_for_Egocentric_Procedural_Task_Videos_CVPR_2024_paper.pdf",
+          project: "https://github.com/Yuhan-Shen/ProTAS",
+        },
+        tldr: "Streaming temporal action segmentation for egocentric video understanding, capable of predicting task-consistent smooth predictions as frames arrive in real-time."
+      },
+
+      {
+        title: "FACT: Frame-Action Cross-Attention Temporal Modeling for Efficient Action Segmentation",
+        venue: "CVPR",
+        year: 2024,
+        categories: ["tas", "egocentric"],
+        links: {
+          pdf: "https://openaccess.thecvf.com/content/CVPR2024/papers/Lu_FACT_Frame-Action_Cross-Attention_Temporal_Modeling_for_Efficient_Action_Segmentation_CVPR_2024_paper.pdf",
+          project: "https://github.com/ZijiaLewisLu/CVPR2024-FACT",
+        },
+        tldr: "Efficient temporal action segmentation for long video understanding, capturing benefits of transformers (long-range dependency modeling) and CNNs (efficiency)."
+      },
 
       {
         title: "Ego-Exo4D: Understanding Skilled Human Activity from First- and Third-Person Perspectives",
@@ -684,7 +722,7 @@
         title: "Assembly101: A Large-Scale Multi-View Video Dataset for Understanding Procedural Activities",
         venue: "CVPR",
         year: 2022,
-        categories: ["dataset", "temporal-action-segmentation", "mistake-recognition"],
+        categories: ["dataset", "tas", "mistake-recognition"],
         links: {
           pdf: "https://arxiv.org/abs/2203.14712",
           project: "https://assembly-101.github.io/",
@@ -708,7 +746,7 @@
         title: "ASFormer: Transformer for Action Segmentation",
         venue: "BMVC",
         year: 2021,
-        categories: ["temporal-action-segmentation"],
+        categories: ["tas"],
         links: {
           pdf: "https://arxiv.org/abs/2110.08568",
           code: "https://github.com/ChinaYi/ASFormer",
@@ -720,7 +758,7 @@
         title: "MS-TCN: Multi-Stage Temporal Convolutional Network for Action Segmentation",
         venue: "CVPR",
         year: 2019,
-        categories: ["temporal-action-segmentation"],
+        categories: ["tas"],
         links: {
           pdf: "https://arxiv.org/abs/1903.01945",
           code: "https://github.com/yabufarha/ms-tcn",
