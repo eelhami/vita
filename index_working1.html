@@ -309,6 +309,10 @@
       letter-spacing: -0.01em; margin: 0 0 0.5rem;
       font-variation-settings: "opsz" 36; color: var(--ink);
     }
+    .paper__authors {
+      font-style: italic; color: var(--ink-soft);
+      font-size: 0.98rem; margin: 0 0 0.5rem;
+    }
     .paper__venue {
       display: inline-block;
       font-family: var(--mono); font-size: 0.72rem;
@@ -496,6 +500,20 @@
           </svg>
         </div>
 
+        <div class="hero__meta">
+          <div class="meta-item">
+            <span class="meta-num" id="meta-count">—</span>
+            <span class="meta-label">Papers</span>
+          </div>
+          <div class="meta-item">
+            <span class="meta-num" id="meta-cats">—</span>
+            <span class="meta-label">Topics</span>
+          </div>
+          <div class="meta-item">
+            <span class="meta-num" id="meta-updated">—</span>
+            <span class="meta-label">Last updated</span>
+          </div>
+        </div>
       </div>
     </section>
 
@@ -533,7 +551,7 @@
         <div class="filters__row">
           <label class="search">
             <span class="search__icon" aria-hidden="true">⌕</span>
-            <input id="search" type="search" placeholder="Search by title, venue, topic…" autocomplete="off" spellcheck="false" />
+            <input id="search" type="search" placeholder="Search by title, author, venue…" autocomplete="off" spellcheck="false" />
           </label>
           <div class="sort">
             <label for="sort">Sort</label>
@@ -609,6 +627,7 @@
        Schema for each entry:
          {
            title:      "Paper title",
+           authors:    "A. Author, B. Author, ...",
            venue:      "CVPR",                      // venue acronym
            year:       2025,
            categories: ["temporal-action-segmentation", "egocentric"],
@@ -640,12 +659,15 @@
       "dataset":                      "Dataset / Benchmark",
     };
 
+    const LAST_UPDATED = "May 2026";
+
     const PAPERS = [
 
       /* ----- starter examples — verify and edit before publishing ----- */
 
       {
         title: "Ego-Exo4D: Understanding Skilled Human Activity from First- and Third-Person Perspectives",
+        authors: "K. Grauman, A. Westbury, L. Torresani, K. Kitani, J. Malik, et al.",
         venue: "CVPR",
         year: 2024,
         categories: ["dataset", "egocentric", "skill-assessment"],
@@ -658,6 +680,7 @@
 
       {
         title: "HoloAssist: An Egocentric Human Interaction Dataset for Interactive AI Assistants in the Real World",
+        authors: "X. Wang, T. Kwon, M. Rad, B. Pan, et al.",
         venue: "ICCV",
         year: 2023,
         categories: ["dataset", "egocentric", "mistake-recognition", "augmented-reality"],
@@ -670,6 +693,7 @@
 
       {
         title: "Ego4D: Around the World in 3,000 Hours of Egocentric Video",
+        authors: "K. Grauman, A. Westbury, E. Byrne, Z. Chavis, et al.",
         venue: "CVPR",
         year: 2022,
         categories: ["dataset", "egocentric", "action-anticipation"],
@@ -682,6 +706,7 @@
 
       {
         title: "Assembly101: A Large-Scale Multi-View Video Dataset for Understanding Procedural Activities",
+        authors: "F. Sener, D. Chatterjee, D. Shelepov, K. He, et al.",
         venue: "CVPR",
         year: 2022,
         categories: ["dataset", "temporal-action-segmentation", "mistake-recognition"],
@@ -694,6 +719,7 @@
 
       {
         title: "ActionFormer: Localizing Moments of Actions with Transformers",
+        authors: "C. Zhang, J. Wu, Y. Li",
         venue: "ECCV",
         year: 2022,
         categories: ["action-detection"],
@@ -706,6 +732,7 @@
 
       {
         title: "ASFormer: Transformer for Action Segmentation",
+        authors: "F. Yi, H. Wen, T. Jiang",
         venue: "BMVC",
         year: 2021,
         categories: ["temporal-action-segmentation"],
@@ -718,6 +745,7 @@
 
       {
         title: "MS-TCN: Multi-Stage Temporal Convolutional Network for Action Segmentation",
+        authors: "Y. Abu Farha, J. Gall",
         venue: "CVPR",
         year: 2019,
         categories: ["temporal-action-segmentation"],
@@ -751,6 +779,11 @@
       const $search = document.getElementById('search');
       const $sort   = document.getElementById('sort');
 
+      document.getElementById('meta-count').textContent =
+        String(PAPERS.length).padStart(2, '0');
+      document.getElementById('meta-cats').textContent =
+        String(Object.keys(CATEGORIES).length).padStart(2, '0');
+      document.getElementById('meta-updated').textContent = LAST_UPDATED;
       document.getElementById('year').textContent = new Date().getFullYear();
 
       function buildChips() {
@@ -818,7 +851,7 @@
           }
           if (q) {
             const hay = [
-              p.title, p.venue, String(p.year),
+              p.title, p.authors, p.venue, String(p.year),
               (p.categories || []).map(c => CATEGORIES[c] || c).join(' '),
               p.tldr || ''
             ].join(' ').toLowerCase();
@@ -871,6 +904,7 @@
             '<div class="paper__year">' + p.year + '</div>' +
             '<div class="paper__body">' +
               '<h3 class="paper__title">' + escapeHtml(p.title) + '</h3>' +
+              '<p class="paper__authors">' + escapeHtml(p.authors) + '</p>' +
               '<div>' + venue + '</div>' +
               tldr +
               '<div class="paper__foot">' +
