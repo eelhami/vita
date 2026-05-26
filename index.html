@@ -625,7 +625,7 @@
          temporal-action-segmentation, action-detection,
          progress-estimation, mistake-recognition,
          action-anticipation, skill-assessment, vision-language,
-         egocentric, augmented-reality, dataset
+         egocentric, instruction-gen, augmented-reality, dataset
        ================================================================= */
 
     const CATEGORIES = {
@@ -638,7 +638,7 @@
       "vision-language":              "Vision–Language",
       "egocentric":                   "Egocentric Video",
       "state-change":                 "State Change",
-      "video-gen":                    "Instruction Generation",
+      "instruction-gen":              "Instruction Generation",
       "augmented-reality":            "Augmented Reality",
       "dataset":                      "Dataset / Benchmark",
     };
@@ -872,6 +872,126 @@
           project: "https://wenliangguo.github.io/Mistake_Detection/",
         },
         tldr: "Action Effect Modeling for detecting procedural mistakes by jointly modeling action execution and outcomes, using effect frames, visual grounding, and symbolic scene graphs."
+      },
+
+      /* ---------- Instructional Video Generation ---------- */
+
+      {
+        title: "Compositional Video Synthesis with Action Graphs",
+        venue: "ICML",
+        year: 2021,
+        categories: ["instruction-gen"],
+        links: {
+          pdf: "https://arxiv.org/abs/2006.15327",
+          project: "https://roeiherz.github.io/AG2Video/",
+        },
+        tldr: "Introduces action graphs as a structured conditioning signal for video synthesis, disentangling appearance from motion to generate compositional multi-actor videos."
+      },
+
+      {
+        title: "Genie: Generative Interactive Environments",
+        venue: "ICML",
+        year: 2024,
+        categories: ["instruction-gen"],
+        links: {
+          pdf: "https://arxiv.org/abs/2402.15391",
+        },
+        tldr: "11B-parameter world model that learns a latent action space in a fully unsupervised way from video alone, enabling controllable interactive environment generation."
+      },
+
+      {
+        title: "UniSim: Learning Interactive Real-World Simulators",
+        venue: "ICLR",
+        year: 2024,
+        categories: ["instruction-gen"],
+        links: {
+          pdf: "https://arxiv.org/abs/2310.06114",
+          project: "https://universal-simulator.github.io/unisim/",
+        },
+        tldr: "A single generative model that serves as a universal visual simulator across language instructions and low-level actions — policies trained purely in its generated world transfer zero-shot to real robots."
+      },
+
+      {
+        title: "GenHowTo: Learning to Generate Actions and State Transformations from Instructional Videos",
+        venue: "CVPR",
+        year: 2024,
+        categories: ["instruction-gen"],
+        links: {
+          pdf: "https://arxiv.org/abs/2312.07322",
+          code: "https://github.com/soCzech/GenHowTo",
+          project: "https://soczech.github.io/genhowto/",
+        },
+        tldr: "Text-and-image conditioned diffusion model that modifies input images to depict actions or resulting state transformations, trained on triplets mined from instructional videos."
+      },
+
+      {
+        title: "Contrastive Sequential-Diffusion Learning for Multi-Scene Instructional Video Synthesis",
+        venue: "WACV",
+        year: 2025,
+        categories: ["instruction-gen"],
+        links: {
+          pdf: "https://arxiv.org/abs/2407.11814",
+          code: "https://github.com/novasearch/CoSeD",
+        },
+        tldr: "Generate-then-select paradigm for multi-step instructional video: produces candidate images per step, uses contrastive scoring against prior steps to pick the most consistent one, then animates."
+      },
+
+      {
+        title: "EgoExo-Gen: Ego-centric Video Prediction by Watching Exo-centric Videos",
+        venue: "ICLR",
+        year: 2025,
+        categories: ["instruction-gen", "egocentric"],
+        links: {
+          pdf: "https://arxiv.org/abs/2504.11732",
+        },
+        tldr: "Predicts egocentric video from abundant exocentric footage via cross-view transfer, using hand-object interaction masks as an intermediate representation to bridge the viewpoint gap."
+      },
+
+      {
+        title: "ShowHowTo: Generating Scene-Conditioned Step-by-Step Visual Instructions",
+        venue: "CVPR",
+        year: 2025,
+        categories: ["instruction-gen"],
+        links: {
+          pdf: "https://arxiv.org/abs/2412.01987",
+          code: "https://github.com/soCzech/ShowHowTo",
+          project: "https://soczech.github.io/showhowto/",
+        },
+        tldr: "Video diffusion model that generates step-by-step visual instructions conditioned on an input scene image, trained on 0.6M instruction sequences mined from instructional videos."
+      },
+
+      {
+        title: "SneakPeek: Future-Guided Instructional Streaming Video Generation",
+        venue: "arXiv",
+        year: 2025,
+        categories: ["instruction-gen"],
+        links: {
+          pdf: "https://arxiv.org/abs/2512.13019",
+        },
+        tldr: "Autoregressive instructional video generation that anticipates future keyframes and uses dual-region KV caching to maintain temporal coherence across multi-step procedures."
+      },
+
+      {
+        title: "PEVA: Whole-Body Conditioned Egocentric Video Prediction",
+        venue: "NeurIPS",
+        year: 2025,
+        categories: ["instruction-gen", "egocentric"],
+        links: {
+          pdf: "https://arxiv.org/abs/2506.21552",
+          project: "https://dannytran123.github.io/PEVA",
+        },
+        tldr: "Autoregressive conditional diffusion transformer that predicts egocentric video from whole-body 3D kinematic pose trajectories."
+      },
+
+      {
+        title: "EgoLCD: Egocentric Video Generation with Long Context Diffusion",
+        venue: "arXiv",
+        year: 2025,
+        categories: ["instruction-gen", "egocentric"],
+        links: {
+          pdf: "https://arxiv.org/abs/2512.04515",
+        },
+        tldr: "Treats long egocentric video generation as a memory management problem — dual memory system with sparse long-term KV cache and attention-based short-term memory for extended temporal coherence."
       },
     ];
 
