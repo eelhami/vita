@@ -915,7 +915,7 @@
         title: "GenHowTo: Learning to Generate Actions and State Transformations from Instructional Videos",
         venue: "CVPR",
         year: 2024,
-        categories: ["instruction-gen"],
+        categories: ["state-change", "instruction-gen"],
         links: {
           pdf: "https://arxiv.org/abs/2312.07322",
           code: "https://github.com/soCzech/GenHowTo",
@@ -994,296 +994,335 @@
         tldr: "Treats long egocentric video generation as a memory management problem — dual memory system with sparse long-term KV cache and attention-based short-term memory for extended temporal coherence."
       },
       {
-        "title": "Am I Done? Predicting Action Progress in Videos",
-        "venue": "TOMM",
-        "year": 2020,
-        "categories": ["progress-estimation"],
-        "links": {
-          "pdf": "https://arxiv.org/pdf/1705.01781"
+        title: "Am I Done? Predicting Action Progress in Videos",
+        venue: "TOMM",
+        year: 2020,
+        categories: ["progress-estimation"],
+        links: {
+          pdf: "https://arxiv.org/pdf/1705.01781"
         },
-        "tldr": "Introduces the task of action progress prediction and proposes ProgressNet, which combines Faster R-CNN for framewise spatio-temporal localization and LSTM networks to model continuous action progress over time."
+        tldr: "Introduces the task of action progress prediction and proposes ProgressNet, which combines Faster R-CNN for framewise spatio-temporal localization and LSTM networks to model continuous action progress over time."
       },
       {
-        "title": "Is There Progress in Activity Progress Prediction?",
-        "venue": "ICCVW",
-        "year": 2023,
-        "categories": ["progress-estimation"],
-        "links": {
-          "pdf": "https://openaccess.thecvf.com/content/ICCV2023W/CVEU/papers/de_Boer_Is_There_Progress_in_Activity_Progress_Prediction_ICCVW_2023_paper.pdf"
+        title: "Is There Progress in Activity Progress Prediction?",
+        venue: "ICCVW",
+        year: 2023,
+        categories: ["progress-estimation"],
+        links: {
+          pdf: "https://openaccess.thecvf.com/content/ICCV2023W/CVEU/papers/de_Boer_Is_There_Progress_in_Activity_Progress_Prediction_ICCVW_2023_paper.pdf"
         },
-        "tldr": "Critically evaluates existing activity progress prediction models, demonstrating that they often rely on uninformative artifacts rather than learning meaningful visual cues, thereby failing to outperform simple frame-counting baselines."
+        tldr: "Critically evaluates existing activity progress prediction models, demonstrating that they often rely on uninformative artifacts rather than learning meaningful visual cues, thereby failing to outperform simple frame-counting baselines."
       },
       {
-        "title": "Temporal Cycle-Consistency Learning",
-        "venue": "CVPR",
-        "year": 2019,
-        "categories": ["progress-estimation"],
-        "links": {
-          "pdf": "https://openaccess.thecvf.com/content_CVPR_2019/papers/Dwibedi_Temporal_Cycle-Consistency_Learning_CVPR_2019_paper.pdf"
+        title: "Temporal Cycle-Consistency Learning",
+        venue: "CVPR",
+        year: 2019,
+        categories: ["progress-estimation"],
+        links: {
+          pdf: "https://openaccess.thecvf.com/content_CVPR_2019/papers/Dwibedi_Temporal_Cycle-Consistency_Learning_CVPR_2019_paper.pdf"
         },
-        "tldr": "Introduces a self-supervised representation learning method that leverages a differentiable temporal cycle-consistency loss across multiple videos to learn per-frame embeddings for fine-grained sequence alignment without human labels."
+        tldr: "Introduces a self-supervised representation learning method that leverages a differentiable temporal cycle-consistency loss across multiple videos to learn per-frame embeddings for fine-grained sequence alignment without human labels."
       },
       {
-        "title": "Learning by Aligning Videos in Time",
-        "venue": "CVPR",
-        "year": 2021,
-        "categories": ["progress-estimation"],
-        "links": {
-          "pdf": "https://openaccess.thecvf.com/content/CVPR2021/papers/Haresh_Learning_by_Aligning_Videos_in_Time_CVPR_2021_paper.pdf"
+        title: "Learning by Aligning Videos in Time",
+        venue: "CVPR",
+        year: 2021,
+        categories: ["progress-estimation"],
+        links: {
+          pdf: "https://openaccess.thecvf.com/content/CVPR2021/papers/Haresh_Learning_by_Aligning_Videos_in_Time_CVPR_2021_paper.pdf"
         },
-        "tldr": "Proposes a self-supervised video representation learning framework that optimizes the embedding space by combining a differentiable global alignment cost based on soft-DTW with a custom temporal regularization term to prevent trivial solutions."
+        tldr: "Proposes a self-supervised video representation learning framework that optimizes the embedding space by combining a differentiable global alignment cost based on soft-DTW with a custom temporal regularization term to prevent trivial solutions."
       },
       {
-        "title": "Look for the Change: Learning Object States and State-Modifying Actions from Untrimmed Web Videos",
-        "venue": "CVPR",
-        "year": 2022,
-        "categories": ["progress-estimation"],
-        "links": {
-          "pdf": "https://openaccess.thecvf.com/content/CVPR2022/papers/Soucek_Look_for_the_Change_Learning_Object_States_and_State-Modifying_Actions_CVPR_2022_paper.pdf"
+        title: "Look for the Change: Learning Object States and State-Modifying Actions from Untrimmed Web Videos",
+        venue: "CVPR",
+        year: 2022,
+        categories: ["state-change", "progress-estimation"],
+        links: {
+          pdf: "https://openaccess.thecvf.com/content/CVPR2022/papers/Soucek_Look_for_the_Change_Learning_Object_States_and_State-Modifying_Actions_CVPR_2022_paper.pdf"
         },
-        "tldr": "Develops a weakly-supervised model to temporally localize object states and state-modifying actions in untrimmed web videos by exploiting the causal ordering of initial state, manipulating action, and end state as a self-supervised signal."
+        tldr: "Develops a weakly-supervised model to temporally localize object states and state-modifying actions in untrimmed web videos by exploiting the causal ordering of initial state, manipulating action, and end state as a self-supervised signal."
       },
       {
-        "title": "Ego4D Goal-Step: Toward Hierarchical Understanding of Procedural Activities",
-        "venue": "NeurIPS",
-        "year": 2023,
-        "categories": ["progress-estimation", "datasets", "egocentric"],
-        "links": {
-          "pdf": "https://papers.neurips.cc/paper_files/paper/2023/file/7a65606fa1a6849450550325832036e5-Paper-Datasets_and_Benchmarks.pdf"
+        title: "Ego4D Goal-Step: Toward Hierarchical Understanding of Procedural Activities",
+        venue: "NeurIPS",
+        year: 2023,
+        categories: ["progress-estimation", "datasets", "egocentric"],
+        links: {
+          pdf: "https://papers.neurips.cc/paper_files/paper/2023/file/7a65606fa1a6849450550325832036e5-Paper-Datasets_and_Benchmarks.pdf"
         },
-        "tldr": "Introduces a large-scale egocentric procedural video dataset featuring a novel, data-driven hierarchical taxonomy spanning goals, steps, and substeps alongside auxiliary intent and completion attributes."
+        tldr: "Introduces a large-scale egocentric procedural video dataset featuring a novel, data-driven hierarchical taxonomy spanning goals, steps, and substeps alongside auxiliary intent and completion attributes."
       },
       {
-        "title": "Learning to Predict Activity Progress by Self-Supervised Video Alignment",
-        "venue": "CVPR",
-        "year": 2024,
-        "categories": ["progress-estimation"],
-        "links": {
-          "pdf": "https://openaccess.thecvf.com/content/CVPR2024/papers/Donahue_Learning_to_Predict_Activity_Progress_by_Self-Supervised_Video_Alignment_CVPR_2024_paper.pdf"
+        title: "Learning to Predict Activity Progress by Self-Supervised Video Alignment",
+        venue: "CVPR",
+        year: 2024,
+        categories: ["progress-estimation"],
+        links: {
+          pdf: "https://openaccess.thecvf.com/content/CVPR2024/papers/Donahue_Learning_to_Predict_Activity_Progress_by_Self-Supervised_Video_Alignment_CVPR_2024_paper.pdf"
         },
-        "tldr": "Generalizes temporal cycle-consistency learning to in-the-wild videos by introducing a multi-neighbor soft nearest-neighbor search via a Gaussian Mixture Model to handle repeated actions and a context-dependent drop function for background frames."
+        tldr: "Generalizes temporal cycle-consistency learning to in-the-wild videos by introducing a multi-neighbor soft nearest-neighbor search via a Gaussian Mixture Model to handle repeated actions and a context-dependent drop function for background frames."
       },
       {
-        "title": "Progress-Aware Video Frame Captioning",
-        "venue": "CVPR",
-        "year": 2025,
-        "categories": ["progress-estimation", "vision-language"],
-        "links": {
-          "pdf": "https://openaccess.thecvf.com/content/CVPR2025/papers/Xue_Progress-Aware_Video_Frame_Captioning_CVPR_2025_paper.pdf"
+        title: "Progress-Aware Video Frame Captioning",
+        venue: "CVPR",
+        year: 2025,
+        categories: ["state-change", "progress-estimation", "vision-language"],
+        links: {
+          pdf: "https://openaccess.thecvf.com/content/CVPR2025/papers/Xue_Progress-Aware_Video_Frame_Captioning_CVPR_2025_paper.pdf"
         },
-        "tldr": "Defines the task of progress-aware video frame captioning and introduces ProgressCaptioner, a multi-stage vision-language model that generates sequential, frame-tailored text descriptions to capture fine-grained temporal and object state dynamics within actions."
+        tldr: "Defines the task of progress-aware video frame captioning and introduces ProgressCaptioner, a multi-stage vision-language model that generates sequential, frame-tailored text descriptions to capture fine-grained temporal and object state dynamics within actions."
       },
       {
-        "title": "MOSCATO: Predicting Multiple Object State Change Through Actions",
-        "venue": "ICCV",
-        "year": 2025,
-        "categories": ["progress-estimation"],
-        "links": {
-          "pdf": "https://openaccess.thecvf.com/content/ICCV2025/papers/Zameni_MOSCATO_Predicting_Multiple_Object_State_Change_Through_Actions_ICCV_2025_paper.pdf"
+        title: "MOSCATO: Predicting Multiple Object State Change Through Actions",
+        venue: "ICCV",
+        year: 2025,
+        categories: ["state-change", "progress-estimation"],
+        links: {
+          pdf: "https://openaccess.thecvf.com/content/ICCV2025/papers/Zameni_MOSCATO_Predicting_Multiple_Object_State_Change_Through_Actions_ICCV_2025_paper.pdf"
         },
-        "tldr": "Establishes a benchmark and a weakly-supervised framework for tracking the evolving states of multiple objects over multi-action sequences using an LLM/VLM pseudo-label acquisition pipeline and a state-action interaction module."
+        tldr: "Establishes a benchmark and a weakly-supervised framework for tracking the evolving states of multiple objects over multi-action sequences using an LLM/VLM pseudo-label acquisition pipeline and a state-action interaction module."
       },
       {
-        "title": "Who's Better? Who's Best? Pairwise Deep Ranking for Skill Determination",
-        "venue": "CVPR",
-        "year": 2018,
-        "categories": ["skill-assessment"],
-        "links": {
-          "pdf": "https://openaccess.thecvf.com/content_cvpr_2018/papers/Doughty_Whos_Better_Whos_CVPR_2018_paper.pdf"
+        title: "Who's Better? Who's Best? Pairwise Deep Ranking for Skill Determination",
+        venue: "CVPR",
+        year: 2018,
+        categories: ["skill-assessment"],
+        links: {
+          pdf: "https://openaccess.thecvf.com/content_cvpr_2018/papers/Doughty_Whos_Better_Whos_CVPR_2018_paper.pdf"
         },
-        "tldr": "Formulates video-based skill assessment as a deep pairwise and global ranking problem, utilizing a Siamese network architecture optimized with a novel ranking loss that enforces similarity margins for indistinguishable skill levels."
+        tldr: "Formulates video-based skill assessment as a deep pairwise and global ranking problem, utilizing a Siamese network architecture optimized with a novel ranking loss that enforces similarity margins for indistinguishable skill levels."
       },
       {
-        "title": "The Pros and Cons: Rank-Aware Temporal Attention for Skill Determination in Long Videos",
-        "venue": "CVPR",
-        "year": 2019,
-        "categories": ["skill-assessment"],
-        "links": {
-          "pdf": "https://openaccess.thecvf.com/content_CVPR_2019/papers/Doughty_The_Pros_and_Cons_Rank-Aware_Temporal_Attention_for_Skill_Determination_CVPR_2019_paper.pdf"
+        title: "The Pros and Cons: Rank-Aware Temporal Attention for Skill Determination in Long Videos",
+        venue: "CVPR",
+        year: 2019,
+        categories: ["skill-assessment"],
+        links: {
+          pdf: "https://openaccess.thecvf.com/content_CVPR_2019/papers/Doughty_The_Pros_and_Cons_Rank-Aware_Temporal_Attention_for_Skill_Determination_CVPR_2019_paper.pdf"
         },
-        "tldr": "Proposes a relative skill determination framework for long videos that jointly trains two distinct rank-aware temporal attention modules to isolate segments indicative of high proficiency (pros) versus low proficiency (cons)."
+        tldr: "Proposes a relative skill determination framework for long videos that jointly trains two distinct rank-aware temporal attention modules to isolate segments indicative of high proficiency (pros) versus low proficiency (cons)."
       },
       {
-        "title": "What and How Well You Performed? A Multitask Learning Approach to Action Quality Assessment",
-        "venue": "CVPR",
-        "year": 2019,
-        "categories": ["skill-assessment"],
-        "links": {
-          "pdf": "https://openaccess.thecvf.com/content_CVPR_2019/papers/Parmar_What_and_How_Well_You_Performed_A_Multitask_Learning_Approach_CVPR_2019_paper.pdf"
+        title: "What and How Well You Performed? A Multitask Learning Approach to Action Quality Assessment",
+        venue: "CVPR",
+        year: 2019,
+        categories: ["skill-assessment"],
+        links: {
+          pdf: "https://openaccess.thecvf.com/content_CVPR_2019/papers/Parmar_What_and_How_Well_You_Performed_A_Multitask_Learning_Approach_CVPR_2019_paper.pdf"
         },
-        "tldr": "Enhances action quality assessment by employing an end-to-end multitask learning framework that jointly optimizes score regression, detailed action recognition, and AQA-oriented caption generation to achieve superior feature generalization."
+        tldr: "Enhances action quality assessment by employing an end-to-end multitask learning framework that jointly optimizes score regression, detailed action recognition, and AQA-oriented caption generation to achieve superior feature generalization."
       },
       {
-        "title": "Uncertainty-Aware Score Distribution Learning for Action Quality Assessment",
-        "venue": "CVPR",
-        "year": 2020,
-        "categories": ["skill-assessment"],
-        "links": {
-          "pdf": "https://openaccess.thecvf.com/content_CVPR_2020/papers/Tang_Uncertainty-Aware_Score_Distribution_Learning_for_Action_Quality_Assessment_CVPR_2020_paper.pdf"
+        title: "Uncertainty-Aware Score Distribution Learning for Action Quality Assessment",
+        venue: "CVPR",
+        year: 2020,
+        categories: ["skill-assessment"],
+        links: {
+          pdf: "https://openaccess.thecvf.com/content_CVPR_2020/papers/Tang_Uncertainty-Aware_Score_Distribution_Learning_for_Action_Quality_Assessment_CVPR_2020_paper.pdf"
         },
-        "tldr": "Proposes an Uncertainty-Aware Score Distribution Learning (USDL) approach that maps deterministic score labels to Gaussian probability distributions to explicitly model the intrinsic ambiguity and subjective variance of expert judges in action quality assessment."
+        tldr: "Proposes an Uncertainty-Aware Score Distribution Learning (USDL) approach that maps deterministic score labels to Gaussian probability distributions to explicitly model the intrinsic ambiguity and subjective variance of expert judges in action quality assessment."
       },
       {
-        "title": "Towards Unified Surgical Skill Assessment",
-        "venue": "CVPR",
-        "year": 2021,
-        "categories": ["skill-assessment"],
-        "links": {
-          "pdf": "https://openaccess.thecvf.com/content/CVPR2021/papers/Liu_Towards_Unified_Surgical_Skill_Assessment_CVPR_2021_paper.pdf"
+        title: "Towards Unified Surgical Skill Assessment",
+        venue: "CVPR",
+        year: 2021,
+        categories: ["skill-assessment"],
+        links: {
+          pdf: "https://openaccess.thecvf.com/content/CVPR2021/papers/Liu_Towards_Unified_Surgical_Skill_Assessment_CVPR_2021_paper.pdf"
         },
-        "tldr": "Introduces a unified multi-path assessment framework that evaluates complex surgical skills by processing and fusing distinct surgical aspects—including tool usage, field clearness, and event workflows—while capturing their inter-path temporal dependencies."
+        tldr: "Introduces a unified multi-path assessment framework that evaluates complex surgical skills by processing and fusing distinct surgical aspects—including tool usage, field clearness, and event workflows—while capturing their inter-path temporal dependencies."
       },
       {
-        "title": "Group-Aware Contrastive Regression for Action Quality Assessment",
-        "venue": "ICCV",
-        "year": 2021,
-        "categories": ["skill-assessment"],
-        "links": {
-          "pdf": "https://openaccess.thecvf.com/content/ICCV2021/papers/Yu_Group-Aware_Contrastive_Regression_for_Action_Quality_Assessment_ICCV_2021_paper.pdf"
+        title: "Group-Aware Contrastive Regression for Action Quality Assessment",
+        venue: "ICCV",
+        year: 2021,
+        categories: ["skill-assessment"],
+        links: {
+          pdf: "https://openaccess.thecvf.com/content/ICCV2021/papers/Yu_Group-Aware_Contrastive_Regression_for_Action_Quality_Assessment_ICCV_2021_paper.pdf"
         },
-        "tldr": "Proposes a Contrastive Regression (CoRe) framework paired with a group-aware regression tree that re-poses action quality score prediction as regressing relative score differences against exemplar reference videos via progressive coarse-to-fine classification."
+        tldr: "Proposes a Contrastive Regression (CoRe) framework paired with a group-aware regression tree that re-poses action quality score prediction as regressing relative score differences against exemplar reference videos via progressive coarse-to-fine classification."
       },
       {
-        "title": "FineDiving: A Fine-Grained Dataset for Procedure-Aware Action Quality Assessment",
-        "venue": "CVPR",
-        "year": 2022,
-        "categories": ["skill-assessment", "datasets"],
-        "links": {
-          "pdf": "https://openaccess.thecvf.com/content/CVPR2022/papers/Xu_FineDiving_A_Fine-Grained_Dataset_for_Procedure-Aware_Action_Quality_Assessment_CVPR_2022_paper.pdf"
+        title: "FineDiving: A Fine-Grained Dataset for Procedure-Aware Action Quality Assessment",
+        venue: "CVPR",
+        year: 2022,
+        categories: ["skill-assessment", "datasets"],
+        links: {
+          pdf: "https://openaccess.thecvf.com/content/CVPR2022/papers/Xu_FineDiving_A_Fine-Grained_Dataset_for_Procedure-Aware_Action_Quality_Assessment_CVPR_2022_paper.pdf"
         },
-        "tldr": "Introduces a sports video dataset annotated with two-level semantic and temporal procedural structures and proposes a procedure-aware assessment model equipped with a temporal segmentation cross-attention mechanism between query and exemplar actions."
+        tldr: "Introduces a sports video dataset annotated with two-level semantic and temporal procedural structures and proposes a procedure-aware assessment model equipped with a temporal segmentation cross-attention mechanism between query and exemplar actions."
       },
       {
-        "title": "Ego-Exo4D: Understanding Skilled Human Activity from First- and Third-Person Perspectives",
-        "venue": "CVPR",
-        "year": 2024,
-        "categories": ["skill-assessment", "datasets", "egocentric"],
-        "links": {
-          "pdf": "https://openaccess.thecvf.com/content/CVPR2024/papers/Grauman_Ego-Exo4D_Understanding_Skilled_Human_Activity_from_First-_and_Third-Person_Perspectives_CVPR_2024_paper.pdf"
+        title: "ExpertAF: Expert Actionable Feedback from Video",
+        venue: "CVPR",
+        year: 2025,
+        categories: ["skill-assessment", "vision-language"],
+        links: {
+          pdf: "https://openaccess.thecvf.com/content/CVPR2025/papers/Ashutosh_ExpertAF_Expert_Actionable_Feedback_from_Video_CVPR_2025_paper.pdf"
         },
-        "tldr": "Introduces a massive multimodal, multiview dataset featuring synchronized first- and third-person videos of skilled activities accompanied by multi-channel audio, IMU, eye gaze, 3D point clouds, and professional coach commentary."
+        tldr: "Proposes a video-language and pose-driven framework to provide coaching-style feedback by simultaneously generating free-form expert text critique and a visual expert demonstration that incorporates required execution corrections."
       },
       {
-        "title": "ExpertAF: Expert Actionable Feedback from Video",
-        "venue": "CVPR",
-        "year": 2025,
-        "categories": ["skill-assessment", "vision-language"],
-        "links": {
-          "pdf": "https://openaccess.thecvf.com/content/CVPR2025/papers/Ashutosh_ExpertAF_Expert_Actionable_Feedback_from_Video_CVPR_2025_paper.pdf"
+        title: "Learning Skill-Attributes for Transferable Assessment in Video",
+        venue: "NeurIPS",
+        year: 2025,
+        categories: ["skill-assessment", "vision-language"],
+        links: {
+          pdf: "https://openreview.net/pdf/d244080db1fb71ec0c14a49eb0f3ed1fcd2dd03a.pdf"
         },
-        "tldr": "Proposes a video-language and pose-driven framework to provide coaching-style feedback by simultaneously generating free-form expert text critique and a visual expert demonstration that incorporates required execution corrections."
+        tldr: "Introduces the CrossTrainer approach, which learns a universal and sports-transcendent skill-attribute representation to enable data-efficient, zero-shot generalization of actionable coaching feedback across novel physical domains."
       },
       {
-        "title": "Learning Skill-Attributes for Transferable Assessment in Video",
-        "venue": "NeurIPS",
-        "year": 2025,
-        "categories": ["skill-assessment", "vision-language"],
-        "links": {
-          "pdf": "https://openreview.net/pdf/d244080db1fb71ec0c14a49eb0f3ed1fcd2dd03a.pdf"
+        title: "Anticipating Visual Representations From Unlabeled Video",
+        venue: "CVPR",
+        year: 2016,
+        categories: ["action-anticipation"],
+        links: {
+          pdf: "https://openaccess.thecvf.com/content_cvpr_2016/papers/Vondrick_Anticipating_Visual_Representations_CVPR_2016_paper.pdf"
         },
-        "tldr": "Introduces the CrossTrainer approach, which learns a universal and sports-transcendent skill-attribute representation to enable data-efficient, zero-shot generalization of actionable coaching feedback across novel physical domains."
+        tldr: "Presents a self-supervised forecasting framework that exploits the inherent temporal structure of unlabeled video to predict high-level semantic future visual representations, which can then be fed into recognition networks to anticipate upcoming actions and objects."
       },
       {
-        "title": "Anticipating Visual Representations From Unlabeled Video",
-        "venue": "CVPR",
-        "year": 2016,
-        "categories": ["action-anticipation"],
-        "links": {
-          "pdf": "https://openaccess.thecvf.com/content_cvpr_2016/papers/Vondrick_Anticipating_Visual_Representations_CVPR_2016_paper.pdf"
+        title: "When Will You Do What? Anticipating Temporal Occurrences of Activities",
+        venue: "CVPR",
+        year: 2018,
+        categories: ["action-anticipation"],
+        links: {
+          pdf: "https://openaccess.thecvf.com/content_cvpr_2018/papers/Abu_Farha_When_Will_You_CVPR_2018_paper.pdf"
         },
-        "tldr": "Presents a self-supervised forecasting framework that exploits the inherent temporal structure of unlabeled video to predict high-level semantic future visual representations, which can then be fed into recognition networks to anticipate upcoming actions and objects."
+        tldr: "Tackles long-term dense action anticipation up to a minutes-long horizon by proposing CNN- and RNN-based frameworks that predict sequences of upcoming action categories along with their corresponding start times and durations."
       },
       {
-        "title": "When Will You Do What? Anticipating Temporal Occurrences of Activities",
-        "venue": "CVPR",
-        "year": 2018,
-        "categories": ["action-anticipation"],
-        "links": {
-          "pdf": "https://openaccess.thecvf.com/content_cvpr_2018/papers/Abu_Farha_When_Will_You_CVPR_2018_paper.pdf"
+        title: "Peeking Into the Future: Predicting Future Person Activities and Locations in Videos",
+        venue: "CVPR",
+        year: 2019,
+        categories: ["action-anticipation"],
+        links: {
+          pdf: "https://openaccess.thecvf.com/content_CVPR_2019/papers/Liang_Peeking_Into_the_Future_Predicting_Future_Person_Activities_and_Locations_CVPR_2019_paper.pdf"
         },
-        "tldr": "Tackles long-term dense action anticipation up to a minutes-long horizon by proposing CNN- and RNN-based frameworks that predict sequences of upcoming action categories along with their corresponding start times and durations."
+        tldr: "Proposes a multi-task learning framework that utilizes rich semantic features of human appearance and behavior to jointly forecast a pedestrian's future spatial trajectories and semantic activity intentions simultaneously."
       },
       {
-        "title": "Peeking Into the Future: Predicting Future Person Activities and Locations in Videos",
-        "venue": "CVPR",
-        "year": 2019,
-        "categories": ["action-anticipation"],
-        "links": {
-          "pdf": "https://openaccess.thecvf.com/content_CVPR_2019/papers/Liang_Peeking_Into_the_Future_Predicting_Future_Person_Activities_and_Locations_CVPR_2019_paper.pdf"
+        title: "Time-Conditioned Action Anticipation in One Shot",
+        venue: "CVPR",
+        year: 2019,
+        categories: ["action-anticipation"],
+        links: {
+          pdf: "https://openaccess.thecvf.com/content_CVPR_2019/papers/Ke_Time-Conditioned_Action_Anticipation_in_One_Shot_CVPR_2019_paper.pdf"
         },
-        "tldr": "Proposes a multi-task learning framework that utilizes rich semantic features of human appearance and behavior to jointly forecast a pedestrian's future spatial trajectories and semantic activity intentions simultaneously."
+        tldr: "Introduces a time-conditioned action anticipation framework that bypasses error-prone autoregressive intermediate predictions by directly incorporating a continuous target time parameter to forecast future actions in a one-shot fashion."
       },
       {
-        "title": "Time-Conditioned Action Anticipation in One Shot",
-        "venue": "CVPR",
-        "year": 2019,
-        "categories": ["action-anticipation"],
-        "links": {
-          "pdf": "https://openaccess.thecvf.com/content_CVPR_2019/papers/Ke_Time-Conditioned_Action_Anticipation_in_One_Shot_CVPR_2019_paper.pdf"
+        title: "Predicting the Future: A Jointly Learnt Model for Action Anticipation",
+        venue: "ICCV",
+        year: 2019,
+        categories: ["action-anticipation"],
+        links: {
+          pdf: "https://openaccess.thecvf.com/content_ICCV_2019/papers/Gammulle_Predicting_the_Future_A_Jointly_Learnt_Model_for_Action_Anticipation_ICCV_2019_paper.pdf"
         },
-        "tldr": "Introduces a time-conditioned action anticipation framework that bypasses error-prone autoregressive intermediate predictions by directly incorporating a continuous target time parameter to forecast future actions in a one-shot fashion."
+        tldr: "Develops a generative adversarial network architecture that jointly trains a shared context descriptor for early action anticipation and future multi-stream (visual and temporal) representation synthesis to avoid sequential information loss."
       },
       {
-        "title": "Predicting the Future: A Jointly Learnt Model for Action Anticipation",
-        "venue": "ICCV",
-        "year": 2019,
-        "categories": ["action-anticipation"],
-        "links": {
-          "pdf": "https://openaccess.thecvf.com/content_ICCV_2019/papers/Gammulle_Predicting_the_Future_A_Jointly_Learnt_Model_for_Action_Anticipation_ICCV_2019_paper.pdf"
+        title: "Anticipative Video Transformer",
+        venue: "ICCV",
+        year: 2021,
+        categories: ["action-anticipation"],
+        links: {
+          pdf: "https://openaccess.thecvf.com/content/ICCV2021/papers/Girdhar_Anticipative_Video_Transformer_ICCV_2021_paper.pdf"
         },
-        "tldr": "Develops a generative adversarial network architecture that jointly trains a shared context descriptor for early action anticipation and future multi-stream (visual and temporal) representation synthesis to avoid sequential information loss."
+        tldr: "Proposes the Anticipative Video Transformer (AVT), which leverages causal masked attention over sequential frames to build feature representations that are simultaneously trained on next-action prediction and self-supervised successive feature generation."
       },
       {
-        "title": "Anticipative Video Transformer",
-        "venue": "ICCV",
-        "year": 2021,
-        "categories": ["action-anticipation"],
-        "links": {
-          "pdf": "https://openaccess.thecvf.com/content/ICCV2021/papers/Girdhar_Anticipative_Video_Transformer_ICCV_2021_paper.pdf"
+        title: "Future Transformer for Long-Term Action Anticipation",
+        venue: "CVPR",
+        year: 2022,
+        categories: ["action-anticipation"],
+        links: {
+          pdf: "https://openaccess.thecvf.com/content/CVPR2022/papers/Gong_Future_Transformer_for_Long-Term_Action_Anticipation_CVPR_2022_paper.pdf"
         },
-        "tldr": "Proposes the Anticipative Video Transformer (AVT), which leverages causal masked attention over sequential frames to build feature representations that are simultaneously trained on next-action prediction and self-supervised successive feature generation."
+        tldr: "Proposes the Future Transformer (FUTR) framework, an end-to-end encoder-decoder model that captures long-term video dependencies and decodes a long sequence of future actions and durations in a fully parallelized, non-autoregressive manner."
       },
       {
-        "title": "Future Transformer for Long-Term Action Anticipation",
-        "venue": "CVPR",
-        "year": 2022,
-        "categories": ["action-anticipation"],
-        "links": {
-          "pdf": "https://openaccess.thecvf.com/content/CVPR2022/papers/Gong_Future_Transformer_for_Long-Term_Action_Anticipation_CVPR_2022_paper.pdf"
+        title: "Uncertainty-Aware Action Decoupling Transformer for Action Anticipation",
+        venue: "CVPR",
+        year: 2024,
+        categories: ["action-anticipation"],
+        links: {
+          pdf: "https://openaccess.thecvf.com/content/CVPR2024/papers/Guo_Uncertainty-aware_Action_Decoupling_Transformer_for_Action_Anticipation_CVPR_2024_paper.pdf"
         },
-        "tldr": "Proposes the Future Transformer (FUTR) framework, an end-to-end encoder-decoder model that captures long-term video dependencies and decodes a long sequence of future actions and durations in a fully parallelized, non-autoregressive manner."
+        tldr: "Introduces the Uncertainty-aware Action Decoupling Transformer (UADT), which splits the action prediction space into cross-assisting verb-to-noun and noun-to-verb Transformer streams while dynamically weighting them based on quantified predictive uncertainty."
       },
       {
-        "title": "Uncertainty-Aware Action Decoupling Transformer for Action Anticipation",
-        "venue": "CVPR",
-        "year": 2024,
-        "categories": ["action-anticipation"],
-        "links": {
-          "pdf": "https://openaccess.thecvf.com/content/CVPR2024/papers/Guo_Uncertainty-aware_Action_Decoupling_Transformer_for_Action_Anticipation_CVPR_2024_paper.pdf"
+        title: "ActFusion: A Unified Diffusion Model for Action Segmentation and Anticipation",
+        venue: "NeurIPS",
+        year: 2024,
+        categories: ["action-anticipation"],
+        links: {
+          pdf: "https://proceedings.neurips.cc/paper_files/paper/2024/file/a3a661eb3308d0bb686f6a4bac521032-Paper-Conference.pdf"
         },
-        "tldr": "Introduces the Uncertainty-aware Action Decoupling Transformer (UADT), which splits the action prediction space into cross-assisting verb-to-noun and noun-to-verb Transformer streams while dynamically weighting them based on quantified predictive uncertainty."
+        tldr: "Introduces ActFusion, a unified diffusion model that simultaneously addresses temporal action segmentation and long-term anticipation within a single denoising architecture using an anticipative masking strategy to bridge visible and invisible sequence elements."
       },
       {
-        "title": "ActFusion: A Unified Diffusion Model for Action Segmentation and Anticipation",
-        "venue": "NeurIPS",
-        "year": 2024,
-        "categories": ["action-anticipation"],
-        "links": {
-          "pdf": "https://proceedings.neurips.cc/paper_files/paper/2024/file/a3a661eb3308d0bb686f6a4bac521032-Paper-Conference.pdf"
+        title: "MANTA: Diffusion Mamba for Efficient and Effective Stochastic Long-Term Dense Action Anticipation",
+        venue: "CVPR",
+        year: 2025,
+        categories: ["action-anticipation"],
+        links: {
+          pdf: "https://openaccess.thecvf.com/content/CVPR2025/papers/Zatsarynna_MANTA_Diffusion_Mamba_for_Efficient_and_Effective_Stochastic_Long-Term_Dense_Action_Anticipation_CVPR_2025_paper.pdf"
         },
-        "tldr": "Introduces ActFusion, a unified diffusion model that simultaneously addresses temporal action segmentation and long-term anticipation within a single denoising architecture using an anticipative masking strategy to bridge visible and invisible sequence elements."
+        tldr: "Proposes a diffusion-based generator called MANTA that pairs structured Mamba layers with bidirectional selective state-space modeling to efficiently capture linear-complexity, long-range temporal relations for stochastic long-term action and duration forecasting."
       },
       {
-        "title": "MANTA: Diffusion Mamba for Efficient and Effective Stochastic Long-Term Dense Action Anticipation",
-        "venue": "CVPR",
-        "year": 2025,
-        "categories": ["action-anticipation"],
-        "links": {
-          "pdf": "https://openaccess.thecvf.com/content/CVPR2025/papers/Zatsarynna_MANTA_Diffusion_Mamba_for_Efficient_and_Effective_Stochastic_Long-Term_Dense_Action_Anticipation_CVPR_2025_paper.pdf"
+        title: "Video State-Changing Object Segmentation",
+        venue: "ICCV",
+        year: 2023,
+        categories: ["state-change"],
+        links: {
+          pdf: "https://openaccess.thecvf.com/content/ICCV2023/papers/Yu_Video_State-Changing_Object_Segmentation_ICCV_2023_paper.pdf"
         },
-        "tldr": "Proposes a diffusion-based generator called MANTA that pairs structured Mamba layers with bidirectional selective state-space modeling to efficiently capture linear-complexity, long-range temporal relations for stochastic long-term action and duration forecasting."
+        tldr: "Formulates the Video State-Changing Object Segmentation (VSCOS) task to track pixel-level transformations of objects under severe appearance shifts, utilizing a weakly-supervised approach that requires training annotations for only the initial and final frames."
+      },
+      {
+        title: "What Changed and What Could Have Changed? State-Change Counterfactuals for Procedure-Aware Video Representation Learning",
+        venue: "ICCV",
+        year: 2025,
+        categories: ["state-change"],
+        links: {
+          pdf: "https://openaccess.thecvf.com/content/ICCV2025/papers/Kung_What_Changed_and_What_Could_Have_Changed_State-Change_Counterfactuals_for_ICCV_2025_paper.pdf"
+        },
+        tldr: "Integrates LLM-generated descriptions of explicit scene transformations and counterfactual failure scenarios into a hierarchical contrastive pre-training framework to enhance long-form procedure awareness in video encoders."
+      },
+      {
+        title: "SAGE: A Unified Framework for Generalizable Object State Recognition with State-Action Graph Embedding",
+        venue: "NeurIPS",
+        year: 2025,
+        categories: ["state-change"],
+        links: {
+          pdf: "https://papers.neurips.cc/paper_files/paper/2025/file/5623c35f3ab5e2c72aeb3abce27dc28f-Paper-Conference.pdf"
+        },
+        tldr: "Employs a state-action graph embedding framework that maps cross-modal relationships to generalize object state recognition across open-world settings featuring unseen object and interaction types."
+      },
+      {
+        title: "Learning Object State Changes in Videos: An Open-World Perspective",
+        venue: "CVPR",
+        year: 2024,
+        categories: ["state-change"],
+        links: {
+          pdf: "https://openaccess.thecvf.com/content/CVPR2024/papers/Xue_Learning_Object_State_Changes_in_Videos_An_Open-World_Perspective_CVPR_2024_paper.pdf"
+        },
+        tldr: "Proposes the VIDOSC approach to temporally localize the initial, transitioning, and end states of objects under active or passive transformations across an open-world testing vocabulary of novel objects."
+      },
+      {
+        title: "A Backpack Full of Skills: Egocentric Video Understanding with Diverse Task Perspectives",
+        venue: "CVPR",
+        year: 2024,
+        categories: ["state-change", "egocentric"],
+        links: {
+          pdf: "https://openaccess.thecvf.com/content/CVPR2024/papers/Peirone_A_Backpack_Full_of_Skills_Egocentric_Video_Understanding_with_Diverse_CVPR_2024_paper.pdf"
+        },
+        tldr: "Introduces EgoPack, a cross-task translation architecture that treats diverse egocentric tasks—including object state change classification—as graph nodes to learn transferable and reusable behavioral knowledge."
       }
-
     ];
 
     /* =================================================================
